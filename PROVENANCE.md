@@ -20,8 +20,10 @@ from this package); the Requisition Bench's adjudicator, spec and scoring (unpub
 release); the qualification and fresh-clone reproduction records of the private tree that the
 report cites by path.
 
-**Status.** Private, for the owner's review. Not yet a release: no tag, no DOI. When released, the
-release is a tag with this file frozen at it; results cite the tag, never a moving branch.
+**Status.** Release `v0.1.0` (2026-09-17): this file is frozen at that tag; results cite the tag,
+never a moving branch. What the tag contains is exactly the listing above; what it does not
+contain is stated above. No DOI yet. The Requisition Bench's adjudicator, spec and scoring are not
+in this release -- they join at the first release that includes a run they judged.
 
 **Dogwood.** github.com/dogwood-policy/dogwood at `fa7a32370a642b32b54c73c16fd75bc88c847050`,
 built from source (`cargo build --release -p dogwood-cli`). Two builds of that commit gave the same
