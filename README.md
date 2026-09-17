@@ -22,6 +22,7 @@ what the run cannot show are in [`findings.md`](findings.md).
 | `verify_dogwood_side.py` | the reader (Python 3, standard library, no network) |
 | `README-verification.md` | how to run the reader, and which citations resolve in this repository |
 | `pack-source/` | the pack's source: the rules, the expressiveness census (each rejected encoding with the validator's recorded output), the R1 exhibit, the fixture bundles as data |
+| `PACKS.md` | the contract a pack author writes against (schema, events, horizon, traces, rule files), how to compare a pack with the plane offline, and why a foreign pack is a new pre-registration and a new run |
 | `PROVENANCE.md` | what this release is, what it is not, and the Dogwood commit it was measured against |
 | `PACKAGE-SHA256SUMS`, `VERIFY.txt` | the sums over every file, and the reader's transcript from inside this package |
 
