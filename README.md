@@ -1,5 +1,7 @@
 # Requisition Bench
 
+> v0.1.0 is a single pre-registered run: Requisition and Dogwood were driven through the same 28 scenarios, every prediction held, and the Dogwood half of every claim can be re-derived offline from this package; the Requisition half is the plane's own recorded evidence, inspectable but not re-executable here.
+
 Measurements of **Requisition**, an authority control plane for autonomous agents: approvals bound to
 frozen payload fingerprints, two-person seats, revocation, expiry, a hold, replay served from the
 record. Each release is a run the plane was driven through, the report written from that run, and a

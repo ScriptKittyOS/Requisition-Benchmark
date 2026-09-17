@@ -1,5 +1,7 @@
 # Provenance
 
+> v0.1.0 is a single pre-registered run: Requisition and Dogwood were driven through the same 28 scenarios, every prediction held, and the Dogwood half of every claim can be re-derived offline from this package; the Requisition half is the plane's own recorded evidence, inspectable but not re-executable here.
+
 **What this is.** The Dogwood cross-plane campaign run `2026-09-17-49489219` of Requisition (the authority
 control plane), its report, and the reader that re-derives the Dogwood side of every claim offline.
 Assembled by `bin/campaign-package` from the private tree at `efdc23f13cd57bad9ec669b0adde78a78769ca3f` on 2026-09-17 and proved
