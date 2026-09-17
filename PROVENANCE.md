@@ -25,6 +25,6 @@ never a moving branch. What the tag contains is exactly the listing above; what 
 contain is stated above. No DOI yet. The Requisition Bench's adjudicator, spec and scoring are not
 in this release -- they join at the first release that includes a run they judged.
 
-**Dogwood.** github.com/dogwood-policy/dogwood at `fa7a32370a642b32b54c73c16fd75bc88c847050`,
+**Dogwood.** [github.com/dogwood-policy/dogwood](https://github.com/dogwood-policy/dogwood) at `fa7a32370a642b32b54c73c16fd75bc88c847050`,
 built from source (`cargo build --release -p dogwood-cli`). Two builds of that commit gave the same
 28 verdicts (workspace `0fb979e9…`, fresh clone `42b4786a…`).

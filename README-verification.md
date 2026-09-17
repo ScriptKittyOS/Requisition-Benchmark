@@ -2,7 +2,7 @@
 
 This file ships with the package `bin/campaign-package` assembles (or with the run directory and
 the report on their own). Needs: Python 3 (standard library), `sha256sum`, and the Dogwood binary
-built from github.com/dogwood-policy/dogwood at the commit `run.json` names as `dogwood_sha`
+built from [github.com/dogwood-policy/dogwood](https://github.com/dogwood-policy/dogwood) at the commit `run.json` names as `dogwood_sha`
 (`cargo build --release -p dogwood-cli`; the executable is `target/release/dogwood`). Nothing
 else: no network, no access to the authority plane's code.
 

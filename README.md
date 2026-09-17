@@ -25,7 +25,7 @@ what the run cannot show are in [`findings.md`](findings.md).
 
 ## Verify it yourself
 
-Build Dogwood at the pinned commit (`fa7a32370a642b32b54c73c16fd75bc88c847050`):
+Build [Dogwood](https://github.com/dogwood-policy/dogwood) at the pinned commit (`fa7a32370a642b32b54c73c16fd75bc88c847050`):
 
     git clone https://github.com/dogwood-policy/dogwood && cd dogwood && git checkout fa7a3237 && cargo build --release -p dogwood-cli
 
