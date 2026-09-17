@@ -1,0 +1,42 @@
+run: <package>/runs/2026-09-17-49489219
+run_id 2026-09-17-49489219; tree_sha 49489219795d6bea7b534a486d700c7f9b901e7f; status complete; recorded 28
+dogwood commit to build: fa7a32370a642b32b54c73c16fd75bc88c847050 (this script cannot read a commit out of the binary; the reader builds it)
+binary: <dogwood> sha256 0fb979e9b14bb8fda929d9411e52aa7cff1d23820c2292f75dabe4f7bd0c7bbd; --version: dogwood 1.0.0
+== 1. digests ==
+  namespace Req; declared actions ['Approve', 'Coapprove', 'Execute', 'Replay', 'Revoke']; rules ['f5_two_person_execute', 'f5_not_revoked', 'f7_execute_once_per_key', 'f7_replay_of_executed_key', 'cedar_bound', 'rl_execute_burst']
+== 2. replay ==
+  ok   T1-F5-no-coapproval-001: DENY implicit_deny []
+  ok   T1-F5-same-approver-001: DENY implicit_deny []
+  ok   T1-F5-same-approver-002: DENY implicit_deny []
+  ok   T1-F5-distinct-coapprover-001: ALLOW  ['f5_two_person_execute']
+  ok   T1-F5-expired-ttl-001: DENY implicit_deny []
+  ok   T1-F5-expired-explicit-001: ALLOW  ['f5_two_person_execute']
+  ok   T1-F5-expired-boundary-001: ALLOW  ['f5_two_person_execute']
+  ok   T1-F5-revoked-001: DENY forbid_fired ['f5_not_revoked']
+  ok   T1-F5-approver-revoked-001: ALLOW  ['f5_two_person_execute']
+  ok   T1-F5-kill-switch-001: ALLOW  ['f5_two_person_execute']
+  ok   T1-F5-coapprove-after-expiry-001: DENY implicit_deny []
+  ok   T1-F4-cross-scope-001: DENY implicit_deny []
+  ok   T1-F7-replay-2-001: DENY forbid_fired ['f7_replay_of_executed_key']
+  ok   T1-F7-replay-3-001: DENY forbid_fired ['f7_replay_of_executed_key']
+  ok   T1-F7-replay-5-001: DENY forbid_fired ['f7_replay_of_executed_key']
+  ok   T1-F7-replay-10-001: DENY forbid_fired ['f7_replay_of_executed_key']
+  ok   T1-F7-replay-after-revoke-001: DENY forbid_fired ['f7_replay_of_executed_key']
+  ok   T1-F7-one-approval-two-keys-001: ALLOW  ['f5_two_person_execute']
+  ok   T1-F7-retry-after-refusal-001: DENY forbid_fired ['f7_execute_once_per_key']
+  ok   T1-F4-payload-swap-001: DENY implicit_deny []
+  ok   T1-F4-payload-swap-002: ALLOW  ['f5_two_person_execute']
+  ok   T4-E3-sybil-001: ALLOW  ['f5_two_person_execute']
+  ok   T4-R1-rate-limit-001: DENY forbid_fired ['rl_execute_burst']
+  ok   T3-A1-logged-bag-only-001: DENY cedar_failed []
+  ok   T3-B1-context-bag-only-001: DENY implicit_deny []
+  ok   T3-C1-unqualified-action-001: DENY undeclared_deny []
+  ok   T3-D1-backdated-execute-001: ALLOW  ['f5_two_person_execute']
+  ok   T3-E1-undeclared-action-001: DENY undeclared_deny []
+== 3. populations ==
+  denied 19; provenance {'implicit_deny': 8, 'forbid_fired': 8, 'cedar_failed': 1, 'undeclared_deny': 2}; agreements {'agree': 14, 'disagree_dogwood_allows': 8, 'disagree_dogwood_denies': 6}
+  the Requisition side (requisition.* on every row) is the plane's own record and is not re-run here
+== 6. pack source: the census's rejected encodings and the R1 exhibit ==
+  fixtures/ (Elixir-rendered trace.exs bundles) need the campaign harness to render and are not re-run here
+checks: 317; findings: 0
+VERIFY DOGWOOD SIDE: PASS

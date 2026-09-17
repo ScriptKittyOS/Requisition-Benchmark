@@ -1,0 +1,8 @@
+// T4-E6 attempt 1: standing authority "valid until revoked" over a year. Every temporal
+// operator carries a mandatory `within`; 365d exceeds the event schema's max_window (24h).
+@id("e6_standing_authority_365d")
+forbid (principal, action == Req::Action::"Execute", resource)
+unless temporal {
+    !Req::Action::"Revoke"::response{ input.approval_id: context.input.approval_id }
+    since within 365d Req::Action::"Approve"::response{ input.approval_id: context.input.approval_id }
+};

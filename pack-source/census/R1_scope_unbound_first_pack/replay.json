@@ -1,0 +1,13 @@
+{
+  "verdicts": [
+    {
+      "index": 0,
+      "timestamp": 1100,
+      "verdict": "allow",
+      "determining_rules": [
+        0
+      ],
+      "errors": []
+    }
+  ]
+}

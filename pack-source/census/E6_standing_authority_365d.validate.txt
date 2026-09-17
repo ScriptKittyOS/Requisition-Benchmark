@@ -1,0 +1,4 @@
+$ dogwood validate E6_standing_authority_365d.dw.rejected --policy-schema schema.cedarschema --event-schema events.dwschema
+error: temporal window `365d` exceeds the maximum allowed window `24h` set by the event schema's `max_window`; shorten this window to at most `24h`, or raise `max_window` in the event schema
+FAILED: 1 error(s), 0 warning(s).
+exit: 2

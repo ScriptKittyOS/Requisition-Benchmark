@@ -1,0 +1,282 @@
+{
+  "by_trial": [
+    {
+      "agreement": "agree",
+      "denial_code": "witness_unsatisfied",
+      "deny_provenance": "implicit_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-no-coapproval-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "witness_unsatisfied",
+      "deny_provenance": "implicit_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-same-approver-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "witness_unsatisfied",
+      "deny_provenance": "implicit_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-same-approver-002"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": null,
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "succeeded",
+      "requisition_outcome": "allowed",
+      "trial_id": "T1-F5-distinct-coapprover-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "approval_expired_at_execution",
+      "deny_provenance": "implicit_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-expired-ttl-001"
+    },
+    {
+      "agreement": "disagree_dogwood_allows",
+      "denial_code": "approval_expired_at_execution",
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-expired-explicit-001"
+    },
+    {
+      "agreement": "disagree_dogwood_allows",
+      "denial_code": "approval_expired_at_execution",
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-expired-boundary-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "approval_revoked",
+      "deny_provenance": "forbid_fired",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-revoked-001"
+    },
+    {
+      "agreement": "disagree_dogwood_allows",
+      "denial_code": "approver_authority_changed",
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-approver-revoked-001"
+    },
+    {
+      "agreement": "disagree_dogwood_allows",
+      "denial_code": "authority_hold",
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-kill-switch-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "approval_expired_at_execution",
+      "deny_provenance": "implicit_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F5-coapprove-after-expiry-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "account_scope_mismatch",
+      "deny_provenance": "implicit_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F4-cross-scope-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "replayed",
+      "deny_provenance": "forbid_fired",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "replayed",
+      "requisition_outcome": "allowed",
+      "trial_id": "T1-F7-replay-2-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "replayed",
+      "deny_provenance": "forbid_fired",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "replayed",
+      "requisition_outcome": "allowed",
+      "trial_id": "T1-F7-replay-3-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "replayed",
+      "deny_provenance": "forbid_fired",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "replayed",
+      "requisition_outcome": "allowed",
+      "trial_id": "T1-F7-replay-5-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "replayed",
+      "deny_provenance": "forbid_fired",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "replayed",
+      "requisition_outcome": "allowed",
+      "trial_id": "T1-F7-replay-10-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "approval_revoked",
+      "deny_provenance": "forbid_fired",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "undecidable",
+      "trial_id": "T1-F7-replay-after-revoke-001"
+    },
+    {
+      "agreement": "disagree_dogwood_allows",
+      "denial_code": "idempotency_key_mismatch",
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "undecidable",
+      "trial_id": "T1-F7-one-approval-two-keys-001"
+    },
+    {
+      "agreement": "disagree_dogwood_denies",
+      "denial_code": null,
+      "deny_provenance": "forbid_fired",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "succeeded",
+      "requisition_outcome": "allowed",
+      "trial_id": "T1-F7-retry-after-refusal-001"
+    },
+    {
+      "agreement": "agree",
+      "denial_code": "payload_hash_mismatch",
+      "deny_provenance": "implicit_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F4-payload-swap-001"
+    },
+    {
+      "agreement": "disagree_dogwood_allows",
+      "denial_code": "payload_hash_mismatch",
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T1-F4-payload-swap-002"
+    },
+    {
+      "agreement": "disagree_dogwood_allows",
+      "denial_code": "witness_unsatisfied",
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T4-E3-sybil-001"
+    },
+    {
+      "agreement": "disagree_dogwood_denies",
+      "denial_code": null,
+      "deny_provenance": "forbid_fired",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "succeeded",
+      "requisition_outcome": "allowed",
+      "trial_id": "T4-R1-rate-limit-001"
+    },
+    {
+      "agreement": "disagree_dogwood_denies",
+      "denial_code": null,
+      "deny_provenance": "cedar_failed",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "succeeded",
+      "requisition_outcome": "allowed",
+      "trial_id": "T3-A1-logged-bag-only-001"
+    },
+    {
+      "agreement": "disagree_dogwood_denies",
+      "denial_code": null,
+      "deny_provenance": "implicit_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "succeeded",
+      "requisition_outcome": "allowed",
+      "trial_id": "T3-B1-context-bag-only-001"
+    },
+    {
+      "agreement": "disagree_dogwood_denies",
+      "denial_code": null,
+      "deny_provenance": "undeclared_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "succeeded",
+      "requisition_outcome": "allowed",
+      "trial_id": "T3-C1-unqualified-action-001"
+    },
+    {
+      "agreement": "disagree_dogwood_allows",
+      "denial_code": "approval_expired_at_execution",
+      "deny_provenance": null,
+      "dogwood_verdict": "ALLOW",
+      "requisition_evidence": "denied",
+      "requisition_outcome": "prevented",
+      "trial_id": "T3-D1-backdated-execute-001"
+    },
+    {
+      "agreement": "disagree_dogwood_denies",
+      "denial_code": null,
+      "deny_provenance": "undeclared_deny",
+      "dogwood_verdict": "DENY",
+      "requisition_evidence": "succeeded",
+      "requisition_outcome": "allowed",
+      "trial_id": "T3-E1-undeclared-action-001"
+    }
+  ],
+  "dogwood_denied_rows": 19,
+  "dogwood_deny_provenance": {
+    "cedar_failed": 1,
+    "forbid_fired": 8,
+    "implicit_deny": 8,
+    "undeclared_deny": 2
+  },
+  "dogwood_harness_errors": {},
+  "format": "crossplane-dogwood.v1",
+  "populations": {
+    "dogwood_denied_rows": "dogwood_verdict == DENY",
+    "refused_rows": "requisition_evidence == denied (a served replay is not a refusal)"
+  },
+  "records": 28,
+  "refused_rows": 17,
+  "requisition_denial_codes": {
+    "account_scope_mismatch": 1,
+    "approval_expired_at_execution": 5,
+    "approval_revoked": 2,
+    "approver_authority_changed": 1,
+    "authority_hold": 1,
+    "idempotency_key_mismatch": 1,
+    "payload_hash_mismatch": 2,
+    "witness_unsatisfied": 4
+  },
+  "typed_on_every_refused_row": true
+}

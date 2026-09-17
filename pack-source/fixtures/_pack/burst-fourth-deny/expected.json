@@ -1,0 +1,40 @@
+{
+  "verdicts": [
+    {
+      "determining_rules": [
+        "f5_two_person_execute"
+      ],
+      "errors": [],
+      "index": 0,
+      "timestamp": 1101,
+      "verdict": "allow"
+    },
+    {
+      "determining_rules": [
+        "f5_two_person_execute"
+      ],
+      "errors": [],
+      "index": 1,
+      "timestamp": 1102,
+      "verdict": "allow"
+    },
+    {
+      "determining_rules": [
+        "f5_two_person_execute"
+      ],
+      "errors": [],
+      "index": 2,
+      "timestamp": 1103,
+      "verdict": "allow"
+    },
+    {
+      "determining_rules": [
+        "rl_execute_burst"
+      ],
+      "errors": [],
+      "index": 3,
+      "timestamp": 1104,
+      "verdict": "deny"
+    }
+  ]
+}

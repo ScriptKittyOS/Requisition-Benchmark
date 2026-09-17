@@ -1,0 +1,13 @@
+{
+  "verdicts": [
+    {
+      "determining_rules": [
+        "f5_two_person_execute"
+      ],
+      "errors": [],
+      "index": 0,
+      "timestamp": 1100,
+      "verdict": "allow"
+    }
+  ]
+}

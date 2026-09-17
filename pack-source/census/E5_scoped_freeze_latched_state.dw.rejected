@@ -1,0 +1,20 @@
+// T4-E5 attempt (REQ-093's census, added 2026-09-17 before the deliverable ran; the spec's §7:
+// an inexpressible claim ships with its failed attempt): a SCOPED FREEZE consulted on the
+// indeterminate path (Feature 0.4 / W6 semantics). In our plane a freeze is a LATCHED state --
+// once placed it holds every execute in its scope until it is released, and an execute whose
+// evidence is indeterminate consults it; nothing about it is an event in the approval's own
+// history. The nearest encoding is the open-session idiom over two posture events: "no Release
+// since the last Freeze". Two things refuse it. (1) The language: `since` needs a `within`
+// (the temporal grammar's `within_payload` is mandatory -- E6's physics), so a freeze older
+// than the horizon is invisible and the latch has an expiry the plane's does not. (2) The
+// vocabulary: the exported trace carries the five approval/execution actions only; a Freeze
+// or a Release is the PLANE's posture, not an act in the trace, and the schema declares none --
+// the kill-switch row (`T1-F5-kill-switch-001`) is this entry's driven exhibit: the pack
+// ALLOWS because the trace carries nothing the freeze changed. The validator reports whichever
+// it reaches first; the recorded output is the measurement.
+@id("e5_scoped_freeze_latched_state")
+forbid (principal, action == Req::Action::"Execute", resource)
+when temporal {
+    !Req::Action::"Release"::response{ input.scope: context.input.scope }
+    since Req::Action::"Freeze"::response{ input.scope: context.input.scope }
+};

@@ -1,0 +1,4 @@
+$ dogwood validate E2_proof_state_as_rule_id.dw.rejected --policy-schema schema.cedarschema --event-schema events.dwschema
+error: for policy `policy_0`, attribute `input.proof_state` in context for Req::Action::"Execute" not found
+FAILED: 1 error(s), 0 warning(s).
+exit: 2

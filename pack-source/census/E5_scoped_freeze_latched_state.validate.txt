@@ -1,0 +1,12 @@
+$ dogwood validate E5_scoped_freeze_latched_state.dw.rejected --policy-schema schema.cedarschema --event-schema events.dwschema
+  × unexpected token `Req`, expected 'within' clause
+    ╭─[18:5]
+ 17 │     when temporal {
+ 18 │ ╭─▶     !Req::Action::"Release"::response{ input.scope: context.input.scope }
+ 19 │ ├─▶     since Req::Action::"Freeze"::response{ input.scope: context.input.scope }
+    · ╰──── unexpected token `Req`, expected 'within' clause
+ 20 │     };
+    ╰────
+
+
+exit: 2

@@ -1,0 +1,40 @@
+{
+  "verdicts": [
+    {
+      "determining_rules": [
+        "scaffold_permit_all"
+      ],
+      "errors": [],
+      "index": 0,
+      "timestamp": 1000,
+      "verdict": "allow"
+    },
+    {
+      "determining_rules": [
+        "scaffold_permit_all"
+      ],
+      "errors": [],
+      "index": 1,
+      "timestamp": 1010,
+      "verdict": "allow"
+    },
+    {
+      "determining_rules": [
+        "scaffold_permit_all"
+      ],
+      "errors": [],
+      "index": 2,
+      "timestamp": 1020,
+      "verdict": "allow"
+    },
+    {
+      "determining_rules": [
+        "scaffold_permit_all"
+      ],
+      "errors": [],
+      "index": 3,
+      "timestamp": 1030,
+      "verdict": "allow"
+    }
+  ]
+}

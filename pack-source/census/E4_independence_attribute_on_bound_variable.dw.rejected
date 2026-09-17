@@ -1,0 +1,12 @@
+// T4-E4 attempt: independence of the two seats over an attribute of each principal
+// (I17/I18: distinct witness roots). Attribute access exists only on the scope roots
+// `principal`/`resource`; a bound variable is a bare identifier with no tail.
+@id("e4_independence_attribute_on_bound_variable")
+permit (principal is Req::Agent, action == Req::Action::"Execute", resource is Req::Approval)
+when temporal {
+    exists (a: Req::User). exists (b: Req::User). (
+        formerly within 24h Req::Action::"Approve"::response{ input.approval_id: context.input.approval_id, callerPrincipal: a }
+        && formerly within 24h Req::Action::"Coapprove"::response{ input.approval_id: context.input.approval_id, callerPrincipal: b }
+        && a.host != b.host
+    )
+};

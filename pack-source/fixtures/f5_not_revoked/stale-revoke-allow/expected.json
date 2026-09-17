@@ -1,0 +1,13 @@
+{
+  "verdicts": [
+    {
+      "determining_rules": [
+        "scaffold_permit_all"
+      ],
+      "errors": [],
+      "index": 0,
+      "timestamp": 90100,
+      "verdict": "allow"
+    }
+  ]
+}

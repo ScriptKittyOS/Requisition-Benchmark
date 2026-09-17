@@ -1,0 +1,11 @@
+$ dogwood validate E6_standing_authority_unbounded.dw.rejected --policy-schema schema.cedarschema --event-schema events.dwschema
+  × unexpected token `Req`, expected 'within' clause
+   ╭─[7:5]
+ 6 │     unless temporal {
+ 7 │ ╭─▶     !Req::Action::"Revoke"::response{ input.approval_id: context.input.approval_id }
+ 8 │ ├─▶     since Req::Action::"Approve"::response{ input.approval_id: context.input.approval_id }
+   · ╰──── unexpected token `Req`, expected 'within' clause
+ 9 │     };
+   ╰────
+
+exit: 2

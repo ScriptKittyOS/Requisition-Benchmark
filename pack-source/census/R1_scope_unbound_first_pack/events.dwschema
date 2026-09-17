@@ -1,0 +1,17 @@
+// Derived by AutonomousAgency.Campaigns.Dogwood.Schema — do not edit; edit the declaration.
+// UNPINNED on purpose: the default pin hides cross-principal history (two-person patterns).
+
+decision event <A>::request {
+    ...inputs(A),
+    callerPrincipal:   principalType(A),
+    callerResource:    resourceType(A),
+    requestId:         String,
+}
+
+event <A>::response {
+    ...inputs(A),
+    ...outputs(A),
+    callerPrincipal:   principalType(A),
+    callerResource:    resourceType(A),
+    requestId:         String,
+}

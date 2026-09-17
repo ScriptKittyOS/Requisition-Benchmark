@@ -1,0 +1,18 @@
+// F5 revocation (spec-level): a Revoke on an approval is TERMINAL -- once revoked, nothing
+// grants under that approval_id again, whatever seats were or are later posted. That is our
+// plane's rule: `revoked` is a terminal status (approval_request.ex @terminal_statuses) that
+// no path re-opens -- a later approve, revoke or expire answers :already_decided
+// (approvals.ex:1188, :619, :646), a later coapprove :primary_approval_required (:469) -- so
+// the pack says it directly: forbid while a Revoke for this approval lies in the horizon. The plan's first encoding was the open-session idiom (`!Revoke since within W
+// Approve`, Dogwood's access_not_revoked_since_grant example); the fix review of 710db46 (3)
+// replayed Approve / Coapprove / Revoke / one fresh Approve to ALLOW under it -- the
+// pre-revocation Coapprove resurrected the grant -- and a per-seat conjunct made this rule fire
+// on a MISSING seat, restating rule 00. Neither is what revocation means here.
+// The horizon: a Revoke older than W is not seen, so fresh seats after a stale Revoke allow
+// (bundle stale-revoke-allow); in our plane that shape is unreachable (terminal), it is
+// recorded as the constant-horizon limit G-174 names.
+@id("f5_not_revoked")
+forbid (principal, action == Req::Action::"Execute", resource)
+when temporal {
+    formerly within 24h Req::Action::"Revoke"::response{ input.approval_id: context.input.approval_id }
+};

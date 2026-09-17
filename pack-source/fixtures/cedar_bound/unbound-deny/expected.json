@@ -1,0 +1,13 @@
+{
+  "verdicts": [
+    {
+      "determining_rules": [
+        "cedar_bound"
+      ],
+      "errors": [],
+      "index": 0,
+      "timestamp": 1100,
+      "verdict": "deny"
+    }
+  ]
+}

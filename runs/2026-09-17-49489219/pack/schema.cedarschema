@@ -1,0 +1,37 @@
+namespace Req {
+  entity User;
+  entity Agent;
+  entity System;
+  entity Approval;
+  entity Run;
+  type ApproveInput = { approval_id: String, payload_hash: String, idempotency_key: String, scope: String };
+  type CoapproveInput = { approval_id: String, payload_hash: String, idempotency_key: String, scope: String };
+  type RevokeInput = { approval_id: String, payload_hash: String, idempotency_key: String, scope: String };
+  type ExecuteInput = { approval_id: String, payload_hash: String, idempotency_key: String, scope: String };
+  type ReplayInput = { approval_id: String, payload_hash: String, idempotency_key: String, scope: String };
+  action "Approve" appliesTo {
+    principal: [User, System],
+    resource: [Approval, Run],
+    context: { input: ApproveInput }
+  };
+  action "Coapprove" appliesTo {
+    principal: [User, System],
+    resource: [Approval, Run],
+    context: { input: CoapproveInput }
+  };
+  action "Revoke" appliesTo {
+    principal: [User, System],
+    resource: [Approval, Run],
+    context: { input: RevokeInput }
+  };
+  action "Execute" appliesTo {
+    principal: [Agent],
+    resource: [Approval, Run],
+    context: { input: ExecuteInput }
+  };
+  action "Replay" appliesTo {
+    principal: [Agent],
+    resource: [Approval, Run],
+    context: { input: ReplayInput }
+  };
+}

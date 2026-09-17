@@ -1,0 +1,12 @@
+// T4-E2 attempt: surface a proof state (degraded / pending_receipt) as a named rule so the
+// verdict carries it. WHAT THIS RECORD PROVES, exactly: that `Schema` refuses a field it does
+// not declare (`context.input.proof_state` is not in ExecuteInput -- the recorded error below).
+// The inexpressibility claim itself does NOT rest on this file: it rests on the verdict
+// codomain, `pub enum Verdict { Allow, Deny }` (dogwood-cli/src/ops.rs:199-202) -- there is no
+// third value for a state to ride on, whatever the rule says -- and on the assembler refusing
+// a second `permit` for one decision action (a Cedar disjunction). A field the schema DID
+// declare would validate and replay to one of the same two words. (Fix review of 710db46, 8:
+// the first comment let the schema refusal read as the evidence.)
+@id("e2_proof_state_as_rule_id")
+permit (principal is Req::Agent, action == Req::Action::"Execute", resource is Req::Approval)
+when { context.input.proof_state == "degraded" };

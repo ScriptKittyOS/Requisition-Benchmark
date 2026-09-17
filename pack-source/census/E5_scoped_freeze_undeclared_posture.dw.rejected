@@ -1,0 +1,13 @@
+// T4-E5 attempt, second form (added 2026-09-17): the same latch with the mandatory window
+// granted -- "no Release within the horizon since the last Freeze" -- so the grammar is
+// satisfied and the next refusal is the one that matters for the report: the exported
+// vocabulary declares no Freeze and no Release. A freeze is the plane's POSTURE; nothing in an
+// approval's history records it, so a trace-replay engine has no event to bind. (With the
+// horizon, the encoding would also make the latch expire -- G-174's constant-horizon limit --
+// which the plane's freeze does not.)
+@id("e5_scoped_freeze_undeclared_posture")
+forbid (principal, action == Req::Action::"Execute", resource)
+when temporal {
+    !Req::Action::"Release"::response{ input.scope: context.input.scope }
+    since within 24h Req::Action::"Freeze"::response{ input.scope: context.input.scope }
+};

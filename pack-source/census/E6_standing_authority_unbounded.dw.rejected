@@ -1,0 +1,9 @@
+// T4-E6 attempt 2: the same property with no window at all -- W3's `held_since` shape.
+// `within` is mandatory on formerly / previous / since (temporal grammar); there is no
+// unbounded operator.
+@id("e6_standing_authority_unbounded")
+forbid (principal, action == Req::Action::"Execute", resource)
+unless temporal {
+    !Req::Action::"Revoke"::response{ input.approval_id: context.input.approval_id }
+    since Req::Action::"Approve"::response{ input.approval_id: context.input.approval_id }
+};

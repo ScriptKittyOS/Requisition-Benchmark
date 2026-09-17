@@ -1,0 +1,52 @@
+{
+  "cedar_schema_sha256": "e56ef1bc6bc744950cf02ed3849578b58d158f3dace0cba49bbe6e54bc9deb2c",
+  "dogwood_sha": "fa7a32370a642b32b54c73c16fd75bc88c847050",
+  "dwschema_sha256": "af2c6069a86fc39edcb503ebdb7654885dd85f227acab284a18b0a624dd6a03e",
+  "macros_sha256": null,
+  "pack_sha256": "98394c1deb950dc8c3f45cf9659516904817dd82b8534ca3c70a27d78a1c924e",
+  "rules": [
+    {
+      "effect": "permit",
+      "id": "f5_two_person_execute",
+      "index": 0,
+      "sha256": "81cb7cd979052d661dae5b23e1d39e58720d128c9bd55f3e35099f702e706146",
+      "source": "rules/00_f5_two_person_execute.dw"
+    },
+    {
+      "effect": "forbid",
+      "id": "f5_not_revoked",
+      "index": 1,
+      "sha256": "2fa4b1c3adf18324db13f8a908d639b062ba8cc0e3ca4b5a2e05922f01c8eeef",
+      "source": "rules/01_f5_not_revoked.dw"
+    },
+    {
+      "effect": "forbid",
+      "id": "f7_execute_once_per_key",
+      "index": 2,
+      "sha256": "37e54f4b749eb8f5701de1f8696a8efd006e7838c0acf06ba2bf7002f6ceb40d",
+      "source": "rules/02_f7_execute_once_per_key.dw"
+    },
+    {
+      "effect": "forbid",
+      "id": "f7_replay_of_executed_key",
+      "index": 3,
+      "sha256": "131af7ee91bc41ab663a42838b2a16ea034792cb523de1dfb3af7fab0d26cba4",
+      "source": "rules/03_f7_replay_of_executed_key.dw"
+    },
+    {
+      "effect": "forbid",
+      "id": "cedar_bound",
+      "index": 4,
+      "sha256": "403706ed0f70bb7104e9bfdbd8e7225aa9d158a1f5c4fd8174460c9a89f09e84",
+      "source": "rules/04_cedar_bound.dw"
+    },
+    {
+      "effect": "forbid",
+      "id": "rl_execute_burst",
+      "index": 5,
+      "sha256": "e3a514cb8b4ae68a5a47250578d59ee46bbf2255377dfc0d023afd1b2d08645b",
+      "source": "rules/05_rl_execute_burst.dw"
+    }
+  ],
+  "schema_module_sha256": "8979e931e83dab460158ecb644d02d32f9b2ffd10cc624c99e1d9330b7e37545"
+}

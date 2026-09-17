@@ -1,0 +1,23 @@
+{
+  "verdicts": [
+    {
+      "determining_rules": [
+        "f5_two_person_execute"
+      ],
+      "errors": [],
+      "index": 0,
+      "timestamp": 1100,
+      "verdict": "allow"
+    },
+    {
+      "determining_rules": [
+        "f5_not_revoked",
+        "f7_execute_once_per_key"
+      ],
+      "errors": [],
+      "index": 1,
+      "timestamp": 1200,
+      "verdict": "deny"
+    }
+  ]
+}

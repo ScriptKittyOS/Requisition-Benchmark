@@ -1,0 +1,6 @@
+// A pure-Cedar condition over the request_context bag: an Execute that names no approval
+// ("unbound", the exporter's marker for a call the router bound to nothing) is refused here,
+// Cedar-side. It exists so the T3a trap (a field supplied to the logged bag only) has a
+// Cedar-side check to be blind to, and as the T2 `cedar_failed` probe's subject.
+@id("cedar_bound")
+forbid (principal, action == Req::Action::"Execute", resource) when { context.input.approval_id == "unbound" };

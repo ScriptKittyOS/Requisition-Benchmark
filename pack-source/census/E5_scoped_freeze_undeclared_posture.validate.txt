@@ -1,0 +1,5 @@
+$ dogwood validate E5_scoped_freeze_undeclared_posture.dw.rejected --policy-schema schema.cedarschema --event-schema events.dwschema
+error: predicate `Req::Action::"Release"::response` does not name a declared event (no event kind `response` derived for action `Release`)
+FAILED: 1 error(s), 0 warning(s).
+
+exit: 2
