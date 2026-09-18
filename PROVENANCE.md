@@ -78,12 +78,13 @@ never a moving branch. What the tag contains is exactly the listing above; what 
 contain is stated above. No DOI yet. The Requisition Bench's adjudicator, spec and scoring are not
 in this release -- they join at the first release that includes a run they judged.
 
-**Known at the tag, found 2026-09-18.** `sha256sum -c PACKAGE-SHA256SUMS` fails at `v0.1.0`: the
+**Known at the tag, found 2026-09-18: this tag's `PACKAGE-SHA256SUMS` is stale; v0.2.0 is the
+checkable package.** `sha256sum -c PACKAGE-SHA256SUMS` fails at `v0.1.0`: the
 sums were taken over the package with its run directory at `2026-09-17-49489219/` and published
 with it at `runs/2026-09-17-49489219/`, and `README-verification.md` was re-pointed at `runs/` after
-the sums. The tag's files are unchanged and are what this section lists; the run directory's own
-`SHA256SUMS` verifies; from v0.2.0 the sums are taken over the repository as laid out, and the
-v0.1.0 run is covered by them.
+the sums. The tag is not re-cut; its files are unchanged and are what this section lists; the run
+directory's own `SHA256SUMS` verifies; from v0.2.0 the sums are taken over the repository as laid
+out, and the v0.1.0 run is covered by them.
 
 **Dogwood.** [github.com/dogwood-policy/dogwood](https://github.com/dogwood-policy/dogwood) at `fa7a32370a642b32b54c73c16fd75bc88c847050`,
 built from source (`cargo build --release -p dogwood-cli`). Two builds of that commit gave the same

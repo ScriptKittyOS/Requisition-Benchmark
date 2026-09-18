@@ -85,8 +85,9 @@ scoring are not in v0.1.0; they join at the first release that includes a run th
 
 Cite a tag (`v0.1.0`, `v0.2.0`), never the branch. `PROVENANCE.md` is frozen at each tag.
 
-**A note on v0.1.0's checksums.** At the `v0.1.0` tag, `sha256sum -c PACKAGE-SHA256SUMS` fails: the
-sums were taken over the package before its run directory was laid under `runs/`, and
-`README-verification.md` was edited after the sums. The files themselves are what the tag says; the
-run directory's own `SHA256SUMS` verifies, and `VERIFY.txt` at the tag is the reader's transcript
-from this layout. From v0.2.0 the sums are taken over the repository as laid out.
+**v0.1.0's `PACKAGE-SHA256SUMS` is stale; v0.2.0 is the checkable package.** At the `v0.1.0` tag,
+`sha256sum -c PACKAGE-SHA256SUMS` fails: the sums were taken over the package before its run
+directory was laid under `runs/`, and `README-verification.md` was edited after the sums. The tag
+is not re-cut. The files themselves are what the tag says; the run directory's own `SHA256SUMS`
+verifies, and `VERIFY.txt` at the tag is the reader's transcript from this layout. From v0.2.0 the
+sums are taken over the repository as laid out and cover the v0.1.0 run too: check out `v0.2.0`.
