@@ -1,0 +1,22 @@
+// F5 (spec-level): an Execute bound to an approval is permitted only if that approval was
+// Approved AND Coapproved by two DISTINCT principals within the authority's validity, with
+// the same payload hash the Execute carries (F4's binding is the payload_hash pin on both
+// seats). "Distinct" is `a != b` over the two seats' callerPrincipal -- two different
+// strings; whether either string is an authenticated principal is the trace author's word
+// (E3, expressible-but-unenforceable). The window is the authority TTL
+// (ApprovalBinding.authority_ttl_seconds/0), tied by PackTest P8.
+// SCOPE (REQ-139, D-18, 2026-09-17): each seat is also pinned to the Execute's `scope` -- the
+// account the evidence was recorded under -- the way approval_id and payload_hash are. The first
+// pack did not pin it, and A's seats spliced onto B's Execute ALLOWED (G-191; the exhibit under
+// pack/census/R1_scope_unbound_first_pack/). Nothing in the language required the pin.
+@id("f5_two_person_execute")
+permit (principal is Req::Agent, action == Req::Action::"Execute", resource is Req::Approval)
+when temporal {
+    exists (a: Req::User). exists (b: Req::User). (
+        formerly within 24h Req::Action::"Approve"::response{
+            input.approval_id: context.input.approval_id, input.payload_hash: context.input.payload_hash, input.scope: context.input.scope, callerPrincipal: a }
+        && formerly within 24h Req::Action::"Coapprove"::response{
+            input.approval_id: context.input.approval_id, input.payload_hash: context.input.payload_hash, input.scope: context.input.scope, callerPrincipal: b }
+        && a != b
+    )
+};

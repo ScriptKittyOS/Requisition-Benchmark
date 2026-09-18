@@ -1,0 +1,8 @@
+// F7, the Replay event: a Replay carrying a key already Executed is refused. Stated for the
+// record: the pack carries no permit for Replay, so every Replay is DENY with or without this
+// rule -- what this rule adds is a NAMED forbid in determining_rules (a DENY produced by a
+// firing forbid carries its index; an implicit deny carries none -- measured 2026-09-16,
+// correcting Phase 0's "DENY carries none", which measured implicit denies only).
+@id("f7_replay_of_executed_key")
+forbid (principal, action == Req::Action::"Replay", resource)
+when temporal { formerly within 24h Req::Action::"Execute"::request{ input.idempotency_key: context.input.idempotency_key } };

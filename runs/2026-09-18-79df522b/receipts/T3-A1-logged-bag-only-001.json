@@ -1,0 +1,52 @@
+{
+  "agent_run_id": "7e73598f-8bef-403d-8c0d-548b36b9478a",
+  "receipts": [
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "052d7a3a735a08a22ac4e079164f1d107a5449911019addefa4427f501c780fa",
+      "sequence": 1,
+      "signature": "AgMXwKN0kegDMPERJCjuWjTFngXFYSAa0NmhwXwF/zQk+LB5++c+nfYZmoqZUhA+KB2s9ZDb6mH7h2vIHwhnDg==",
+      "signed_payload": "{\"chain_scope\":\"account:e4a05c44-d309-4b3e-9b4e-5fc5cdf38485:run:7e73598f-8bef-403d-8c0d-548b36b9478a\",\"metadata\":{\"event_type\":\"approval.requested\",\"proof_hash\":\"3ec405eada80fb0198dbab5fbc11c88def7a1b525900d2aa31155eef3dd664c9\",\"source\":\"ApprovalGate\",\"status\":\"pending\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"3ec405eada80fb0198dbab5fbc11c88def7a1b525900d2aa31155eef3dd664c9\",\"previous_hash\":null,\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":1,\"status\":\"recorded\",\"subject_id\":\"80400553-b0ab-4bc4-a288-826e91599349\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "80400553-b0ab-4bc4-a288-826e91599349"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "6cf8d812e0bd9b85069b04de3d85cbfe3f5541d4f057e522008240cbd987a11a",
+      "sequence": 2,
+      "signature": "yuCKrR5MWfpy8w2TcYAGsncvbdf+H97TtlfUSB4nIgTilCBO4tsrZCXTiRr6lZ3iLDo7ZbQtvOPoneBz3LRCDQ==",
+      "signed_payload": "{\"chain_scope\":\"account:e4a05c44-d309-4b3e-9b4e-5fc5cdf38485:run:7e73598f-8bef-403d-8c0d-548b36b9478a\",\"metadata\":{\"event_type\":\"approval.approved\",\"proof_hash\":\"d3c525601995357748b948a92c1fab44d8866da9344567dab8a57bd4960b4040\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"d3c525601995357748b948a92c1fab44d8866da9344567dab8a57bd4960b4040\",\"previous_hash\":\"052d7a3a735a08a22ac4e079164f1d107a5449911019addefa4427f501c780fa\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":2,\"status\":\"recorded\",\"subject_id\":\"14424adc-c916-4dfb-a8e1-553df8a7193d\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "14424adc-c916-4dfb-a8e1-553df8a7193d"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "8d8f88ba30b01799cac09a0844929179bcf4af7d2753a64c398ea0a16cea9147",
+      "sequence": 3,
+      "signature": "yJBjkG/Sq0Yk5n8NDMh/6Zkeup8oURMwzH6TKrHHtRNjZOd8/gHBtuaFHF1EGp2pMlp8EGXZDDb6S5VnEuKUAA==",
+      "signed_payload": "{\"chain_scope\":\"account:e4a05c44-d309-4b3e-9b4e-5fc5cdf38485:run:7e73598f-8bef-403d-8c0d-548b36b9478a\",\"metadata\":{\"event_type\":\"approval.coapproved\",\"proof_hash\":\"4c5f80af2db6908a7eb4c0dfa029fdc98beefe5a3c47153e66915a2aead00524\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:10Z\",\"payload_hash\":\"4c5f80af2db6908a7eb4c0dfa029fdc98beefe5a3c47153e66915a2aead00524\",\"previous_hash\":\"6cf8d812e0bd9b85069b04de3d85cbfe3f5541d4f057e522008240cbd987a11a\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":3,\"status\":\"recorded\",\"subject_id\":\"c758f45e-f415-4382-aac5-6b42cd9c997e\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "c758f45e-f415-4382-aac5-6b42cd9c997e"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "380fae474096e3b1ec642445186c79804b6b3bf319ce56db0f135d1b64d0f999",
+      "sequence": 4,
+      "signature": "9rjjxTgBxFh+/VpvzA3UmchseCkf3rBEJ8fnyCXMdPBvsizYtpUkPA2Lp4YcjYbp2FQvSIXp735KbZ+deTf0Ag==",
+      "signed_payload": "{\"chain_scope\":\"account:e4a05c44-d309-4b3e-9b4e-5fc5cdf38485:run:7e73598f-8bef-403d-8c0d-548b36b9478a\",\"metadata\":{\"event_type\":\"tool.succeeded\",\"proof_hash\":\"b8a07b4f6280df76cbc16b803860363b8b5402fe74a9e3dcfa1ab113d44fd756\",\"source\":\"ToolRouter\",\"status\":\"succeeded\"},\"occurred_at\":\"2026-09-06T00:01:40Z\",\"payload_hash\":\"b8a07b4f6280df76cbc16b803860363b8b5402fe74a9e3dcfa1ab113d44fd756\",\"previous_hash\":\"8d8f88ba30b01799cac09a0844929179bcf4af7d2753a64c398ea0a16cea9147\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":4,\"status\":\"recorded\",\"subject_id\":\"97218ecf-c42c-481b-8595-7ec47b3aacd4\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "97218ecf-c42c-481b-8595-7ec47b3aacd4"
+    }
+  ],
+  "requisition": {
+    "denial_code": null,
+    "evidence": "succeeded"
+  },
+  "subject": {
+    "chain_scope": "account:e4a05c44-d309-4b3e-9b4e-5fc5cdf38485:run:7e73598f-8bef-403d-8c0d-548b36b9478a",
+    "code": null,
+    "event_type": "tool.succeeded",
+    "id": "97218ecf-c42c-481b-8595-7ec47b3aacd4",
+    "occurred_at": "2026-09-06T00:01:40Z",
+    "proof_hash": "b8a07b4f6280df76cbc16b803860363b8b5402fe74a9e3dcfa1ab113d44fd756",
+    "sequence": 4,
+    "status": "succeeded"
+  },
+  "trial_id": "T3-A1-logged-bag-only-001"
+}

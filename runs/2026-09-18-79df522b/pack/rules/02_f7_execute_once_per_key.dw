@@ -1,0 +1,8 @@
+// F7 (spec-level): an idempotency key executes at most once. Dogwood's `formerly` scans
+// j in [0, i] -- the current decision event sees itself (eval.rs:527) -- so the spec's
+// `unless formerly Execute{key}` would deny the FIRST execute too. A self-inclusive count is
+// the honest form: the first Execute with a key counts 1, the second counts 2 and is refused.
+@id("f7_execute_once_per_key")
+forbid (principal, action == Req::Action::"Execute", resource)
+when temporal { 1 < count for (t: Timepoint). where (formerly within 24h (
+    Req::Action::"Execute"::request{ input.idempotency_key: context.input.idempotency_key } && tp(t))) };

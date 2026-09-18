@@ -1,0 +1,148 @@
+{
+  "agent_run_id": "6084f360-42c2-4af1-8ed4-c9ca8fbd158f",
+  "receipts": [
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "3caa829568d565c9fd4e3061c9bbcfdc0c96707887760465c2a37c9f43ada3b1",
+      "sequence": 1,
+      "signature": "yDCQB25MWyTTB3RLOJR//qtr5umMqWGRNNs7sGh7mUvCCzUm+5t4aiiJjGaYUsnDC6jrp2jupCjnLeff3QX7Cg==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.requested\",\"proof_hash\":\"d5f43c8911f1338df13edd2b90a24a1142b8b5cbe22e3965fd2099b9e1bb2fe8\",\"source\":\"ApprovalGate\",\"status\":\"pending\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"d5f43c8911f1338df13edd2b90a24a1142b8b5cbe22e3965fd2099b9e1bb2fe8\",\"previous_hash\":null,\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":1,\"status\":\"recorded\",\"subject_id\":\"666dce33-6625-47e0-a39a-90be4f7ca63c\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "666dce33-6625-47e0-a39a-90be4f7ca63c"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "c6cb982487c64175b6f2f63c70a6a8ce720c89f3b758d8f3c910c075c8ea7d3a",
+      "sequence": 2,
+      "signature": "E/i4V+4wpf+tyn2FcsrOW/lYIh4s6Xqxqr/lJbNGKeB1W6EZDdTfS7PURnJu2ovBn8lhPQaJj7p2dl8thkhPDw==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.approved\",\"proof_hash\":\"8741fe0b6d21d9e1ccb6900bc6447629fbe8ee0e066b1c9019e35ec8fa261ba4\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"8741fe0b6d21d9e1ccb6900bc6447629fbe8ee0e066b1c9019e35ec8fa261ba4\",\"previous_hash\":\"3caa829568d565c9fd4e3061c9bbcfdc0c96707887760465c2a37c9f43ada3b1\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":2,\"status\":\"recorded\",\"subject_id\":\"b4f724b7-d434-4cb0-9157-40568a23edd7\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "b4f724b7-d434-4cb0-9157-40568a23edd7"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "be396d8cc6db2dd85dfd8a38c732a58bf0e734009b29197f89c43f633dfc116a",
+      "sequence": 3,
+      "signature": "H+DFO+tKr9PIizDKcaAtVBXNe1sWz31aSHqnn1WChFOZ3SGuMhK1aH3sO/0MsaIdtSYUezVt1JuMwuxqIxGKDQ==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.requested\",\"proof_hash\":\"5438e8305843c1849340e0f159f324919f1394c8a4fa6c21b5dcbc1d31c4cde9\",\"source\":\"ApprovalGate\",\"status\":\"pending\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"5438e8305843c1849340e0f159f324919f1394c8a4fa6c21b5dcbc1d31c4cde9\",\"previous_hash\":\"c6cb982487c64175b6f2f63c70a6a8ce720c89f3b758d8f3c910c075c8ea7d3a\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":3,\"status\":\"recorded\",\"subject_id\":\"804ac791-40b1-49b1-951f-0e7b4843bd97\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "804ac791-40b1-49b1-951f-0e7b4843bd97"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "bf6d9428b0956b21da735de6d653487edd47b00ae0b3d1b248ea76e0a42a1b4f",
+      "sequence": 4,
+      "signature": "ulrxxYcfgErmNoRtYRbIIzBqiK26CgHND/KURLRliuv3w+ci5a8zbt6xOWYrcEuY+T/+amEFJKEAfPUaVjVyDA==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.approved\",\"proof_hash\":\"804b27957df3e903162a63a817db82334703bd22b9921908c13253a44af1a781\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"804b27957df3e903162a63a817db82334703bd22b9921908c13253a44af1a781\",\"previous_hash\":\"be396d8cc6db2dd85dfd8a38c732a58bf0e734009b29197f89c43f633dfc116a\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":4,\"status\":\"recorded\",\"subject_id\":\"41c5c7d1-c365-4399-aeb6-a174882165fa\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "41c5c7d1-c365-4399-aeb6-a174882165fa"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "4a3fd368ac586e79e62735b6288853743f272a59102dc510d447706057faa8ef",
+      "sequence": 5,
+      "signature": "Z+1bsvALJL6hLaew3aij5J2CEreaS/lD5XLI86KpL3AmLe7adH2cuJh2veown9f0moNMyuAeDmPfQEXjRVK7Dw==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.requested\",\"proof_hash\":\"422ca7e197d424b1cb4f44a7c345f59027c50166b1755d31efcc01d057e8dbcc\",\"source\":\"ApprovalGate\",\"status\":\"pending\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"422ca7e197d424b1cb4f44a7c345f59027c50166b1755d31efcc01d057e8dbcc\",\"previous_hash\":\"bf6d9428b0956b21da735de6d653487edd47b00ae0b3d1b248ea76e0a42a1b4f\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":5,\"status\":\"recorded\",\"subject_id\":\"78e93567-a9b3-4c31-bf06-549a0a87198b\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "78e93567-a9b3-4c31-bf06-549a0a87198b"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "42b028750a86bea4612302432c64779608ec7de643bfb176e8473d4a94028bac",
+      "sequence": 6,
+      "signature": "j96hMZk2vZX0weD/blvqlRyqzBc+eI6BcV5A8+XB9Jqe1VyAktwpelUhvdl22+qKPI5MVyq24rPG5I/jOv3fAA==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.approved\",\"proof_hash\":\"ceaf7bc4added64236e77a35cc0c82baf3cacc4eb94e2f97211b4097380b08b0\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"ceaf7bc4added64236e77a35cc0c82baf3cacc4eb94e2f97211b4097380b08b0\",\"previous_hash\":\"4a3fd368ac586e79e62735b6288853743f272a59102dc510d447706057faa8ef\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":6,\"status\":\"recorded\",\"subject_id\":\"8d9751c7-b121-4b36-8aea-2c4e9e1f2560\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "8d9751c7-b121-4b36-8aea-2c4e9e1f2560"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "c7ac28da28de6f40e284a605a68913c59e962cd664798d7cb872671e76b97c34",
+      "sequence": 7,
+      "signature": "474Eh+vUKcT3MnElgYuEnVHZOAK+UJ3GZ1YnRyhh3FGKwYsIh5hxPuMmcbZPpnsy9mJSYUYlANjRuRwP/e48CQ==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.requested\",\"proof_hash\":\"e2aa45de9cf53fa8a088ca835d2dca145508a08b5659ab4d2b591f5d9163b5e1\",\"source\":\"ApprovalGate\",\"status\":\"pending\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"e2aa45de9cf53fa8a088ca835d2dca145508a08b5659ab4d2b591f5d9163b5e1\",\"previous_hash\":\"42b028750a86bea4612302432c64779608ec7de643bfb176e8473d4a94028bac\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":7,\"status\":\"recorded\",\"subject_id\":\"4043a30d-a343-4bc3-9a8d-a7f3e2438dbf\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "4043a30d-a343-4bc3-9a8d-a7f3e2438dbf"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "b7c82a3e395d463805857566dae138bb6c0d9f504361eab9ffce0480edf34f40",
+      "sequence": 8,
+      "signature": "bxvr8oETmiQeyMDe7BdRBALodnrVmBY/wLcDI3SiOIcAmBwD31B4Uk2Zy0XBnBt49WO60YCCBXQZ2YspjHnJBA==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.approved\",\"proof_hash\":\"d2750f96dcecc6c48b23f71bf334afc44f44b5e70b967607cb32cf61edfc8688\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:00Z\",\"payload_hash\":\"d2750f96dcecc6c48b23f71bf334afc44f44b5e70b967607cb32cf61edfc8688\",\"previous_hash\":\"c7ac28da28de6f40e284a605a68913c59e962cd664798d7cb872671e76b97c34\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":8,\"status\":\"recorded\",\"subject_id\":\"edbfbe40-27ca-4a29-b24c-36659d7a74a4\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "edbfbe40-27ca-4a29-b24c-36659d7a74a4"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "9086a6a475b959776dedb3dc6b3e136331003894db67fb5806f07b58d3d3d8e8",
+      "sequence": 9,
+      "signature": "wO78iZkVHORHdRn1+y1eYQpHjf/w6LFjr9uRO2Tl3VEx3Oe1kURCsfb6KR/DBiaWd+WrRywdOqT052BQUIdYBg==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.coapproved\",\"proof_hash\":\"c7656230b7de40ceeaffc148c7317acab77907c3a530983534fbc3ffb015615a\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:10Z\",\"payload_hash\":\"c7656230b7de40ceeaffc148c7317acab77907c3a530983534fbc3ffb015615a\",\"previous_hash\":\"b7c82a3e395d463805857566dae138bb6c0d9f504361eab9ffce0480edf34f40\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":9,\"status\":\"recorded\",\"subject_id\":\"e7271d74-0244-47b8-b2a5-5b64dd9ac9c4\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "e7271d74-0244-47b8-b2a5-5b64dd9ac9c4"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "60d39b3c693c9aa61139a10071943fc13dcc17fb0f11708d1b355262c13f8536",
+      "sequence": 10,
+      "signature": "/xb5oqiMlR7yjBNsATmIJsHVkrX9SoLmdf2rkmrIYyD3hrND6cvJeYCES/6H5nKGRbSiYPd9KNYzhKQ9ONFCDw==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.coapproved\",\"proof_hash\":\"98f47c584911fe61a2f315d78968a98ea7e76168b306f9cfd4fd2d6b26c4f0bb\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:10Z\",\"payload_hash\":\"98f47c584911fe61a2f315d78968a98ea7e76168b306f9cfd4fd2d6b26c4f0bb\",\"previous_hash\":\"9086a6a475b959776dedb3dc6b3e136331003894db67fb5806f07b58d3d3d8e8\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":10,\"status\":\"recorded\",\"subject_id\":\"16890564-c9eb-4c87-aba7-cebce8960ce5\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "16890564-c9eb-4c87-aba7-cebce8960ce5"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "059e8b700e18d5804d100b75bdea9891a0f155f0d9a94ff8f4bf9efd79dc3e09",
+      "sequence": 11,
+      "signature": "afdRqEpkR1/u8m00PQ1sJp/jwEp7I4H0nAiHgCTw9j3/SGh1foXmvqWuW4syU7d1d0deYfMoDPV6bQ5jlTtBAw==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.coapproved\",\"proof_hash\":\"aa8e1f78626c9f5888c6286a7787a3a95c1231b7dd9dd8ff6486bdd682ad8b11\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:10Z\",\"payload_hash\":\"aa8e1f78626c9f5888c6286a7787a3a95c1231b7dd9dd8ff6486bdd682ad8b11\",\"previous_hash\":\"60d39b3c693c9aa61139a10071943fc13dcc17fb0f11708d1b355262c13f8536\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":11,\"status\":\"recorded\",\"subject_id\":\"de9b2df3-b4c7-4f0f-89d2-dfbaffa7ca54\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "de9b2df3-b4c7-4f0f-89d2-dfbaffa7ca54"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "f875732aa4736361c61a656fe94320737ff2ff9352c40cc0a219552dbd7d38c8",
+      "sequence": 12,
+      "signature": "Di6jp85DaPZWEjJjml0B/+v+WrXSC86q3sfZc7EdPuqavuvLyhU/KU5lCJeEsYRCpuaqT8w8vTXIApoaUrrgDA==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"approval.coapproved\",\"proof_hash\":\"5a0bcaceaae61e29f2d731bc79a963566cbe5b5fe2505205fb81b320bfb764c2\",\"source\":\"ApprovalGate\",\"status\":\"approved\"},\"occurred_at\":\"2026-09-06T00:00:10Z\",\"payload_hash\":\"5a0bcaceaae61e29f2d731bc79a963566cbe5b5fe2505205fb81b320bfb764c2\",\"previous_hash\":\"059e8b700e18d5804d100b75bdea9891a0f155f0d9a94ff8f4bf9efd79dc3e09\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":12,\"status\":\"recorded\",\"subject_id\":\"edc20af4-96cb-4844-8b3b-1f8e7d7cd7ca\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "edc20af4-96cb-4844-8b3b-1f8e7d7cd7ca"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "3f7bd2a0c16cdf59b5e8f76043958fc03c717371ba4aa01555dfb1511f1320c8",
+      "sequence": 13,
+      "signature": "byrNjveqKE4iCPV88Xk6L2IeaEZIe6LHBA7h9A3pBqyQPzL+EWd6Hm5o0XP/90VcMB31LqopwJJmKJIg83giAA==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"tool.succeeded\",\"proof_hash\":\"037eaf0b01df24146e528feedc22cf9b02603a37fc85d72c3e44438b602169c7\",\"source\":\"ToolRouter\",\"status\":\"succeeded\"},\"occurred_at\":\"2026-09-06T00:01:40Z\",\"payload_hash\":\"037eaf0b01df24146e528feedc22cf9b02603a37fc85d72c3e44438b602169c7\",\"previous_hash\":\"f875732aa4736361c61a656fe94320737ff2ff9352c40cc0a219552dbd7d38c8\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":13,\"status\":\"recorded\",\"subject_id\":\"ea8dc1b2-b307-4b4e-8c87-698c4d7e19e2\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "ea8dc1b2-b307-4b4e-8c87-698c4d7e19e2"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "c0d63a22e09b23cc3175fba1704f013c50e5ed658c57bca771cc55b42f2eee61",
+      "sequence": 14,
+      "signature": "TLDe0AtMXCoeqmgQeaP+dn3NiX+9dsRMB6Id32r107YQUDbKJOfqzSJ8cqCpqf6BdavzCxd2IwFiqKtQXldhCA==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"tool.succeeded\",\"proof_hash\":\"6ecf94ac718fb1281b797fe2065fe81a172495a825adf64fa8d3c72dab477389\",\"source\":\"ToolRouter\",\"status\":\"succeeded\"},\"occurred_at\":\"2026-09-06T00:02:40Z\",\"payload_hash\":\"6ecf94ac718fb1281b797fe2065fe81a172495a825adf64fa8d3c72dab477389\",\"previous_hash\":\"3f7bd2a0c16cdf59b5e8f76043958fc03c717371ba4aa01555dfb1511f1320c8\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":14,\"status\":\"recorded\",\"subject_id\":\"67014a3a-cb60-49ac-9ae2-5baa2448c54c\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "67014a3a-cb60-49ac-9ae2-5baa2448c54c"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "e12f8b98dde7a95582c7b0a8d44ba583e48ab92cbb5821c9167803dd6b34ccee",
+      "sequence": 15,
+      "signature": "4GhT4IORiyCBiCktp268LAP7KO0h0e1JMPPtPaEIgMG+6ZIfLlQFHPizh4oo3FtJV9V1ix83X+ye6KTq1DZ0DA==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"tool.succeeded\",\"proof_hash\":\"e15969a792e1411db5b6b9c7f9f7e932edcebeb13ec48fa81aa5efdf8aaf3a26\",\"source\":\"ToolRouter\",\"status\":\"succeeded\"},\"occurred_at\":\"2026-09-06T00:03:40Z\",\"payload_hash\":\"e15969a792e1411db5b6b9c7f9f7e932edcebeb13ec48fa81aa5efdf8aaf3a26\",\"previous_hash\":\"c0d63a22e09b23cc3175fba1704f013c50e5ed658c57bca771cc55b42f2eee61\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":15,\"status\":\"recorded\",\"subject_id\":\"77fbd44e-a5d0-4dc8-8457-c5d445586461\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "77fbd44e-a5d0-4dc8-8457-c5d445586461"
+    },
+    {
+      "key_id": "evaluation_ed25519_v1",
+      "receipt_hash": "b7b3480205bd100d9d6b78c12e4e48c1daf1c9dd72de8c59b05114437d376368",
+      "sequence": 16,
+      "signature": "QeGeP/VZkzUL5Lu99/zZVW67hxPAfzIPSp1O1bYn5W1xRaF0FO6x7UfAYDQMNXGHVQTnf7wi+2c2KjQI/1u7Cg==",
+      "signed_payload": "{\"chain_scope\":\"account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f\",\"metadata\":{\"event_type\":\"tool.succeeded\",\"proof_hash\":\"1e246df484173b402ab812643affbfad19df218a4db87045bdd5672470c5e336\",\"source\":\"ToolRouter\",\"status\":\"succeeded\"},\"occurred_at\":\"2026-09-06T00:04:40Z\",\"payload_hash\":\"1e246df484173b402ab812643affbfad19df218a4db87045bdd5672470c5e336\",\"previous_hash\":\"e12f8b98dde7a95582c7b0a8d44ba583e48ab92cbb5821c9167803dd6b34ccee\",\"receipt_type\":\"audit_event\",\"schema_version\":\"agent_receipt.v1\",\"sequence\":16,\"status\":\"recorded\",\"subject_id\":\"95c3a25f-93a2-4eeb-9ca6-e084c96bfa69\",\"subject_type\":\"audit_event\"}",
+      "subject_id": "95c3a25f-93a2-4eeb-9ca6-e084c96bfa69"
+    }
+  ],
+  "requisition": {
+    "denial_code": null,
+    "evidence": "succeeded"
+  },
+  "subject": {
+    "chain_scope": "account:f648589b-4b0b-4c7d-b650-426275a63e65:run:6084f360-42c2-4af1-8ed4-c9ca8fbd158f",
+    "code": null,
+    "event_type": "tool.succeeded",
+    "id": "95c3a25f-93a2-4eeb-9ca6-e084c96bfa69",
+    "occurred_at": "2026-09-06T00:04:40Z",
+    "proof_hash": "1e246df484173b402ab812643affbfad19df218a4db87045bdd5672470c5e336",
+    "sequence": 16,
+    "status": "succeeded"
+  },
+  "trial_id": "T4-R1-rate-limit-001"
+}

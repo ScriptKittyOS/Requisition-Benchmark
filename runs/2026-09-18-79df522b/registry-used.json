@@ -1,0 +1,10 @@
+{
+  "key_id": "evaluation_ed25519_v1",
+  "public_key": "V5duQnl28gXwddsXpNZqVnskQFcVjXbt+Fob98ZORN0=",
+  "registry": {
+    "commit": "d19945c5647d8e59b18bc7ec242ca39fbd2162ff",
+    "path": "receipt-verification/keys/evaluation-registry.json",
+    "repository": "https://github.com/ScriptKittyOS/HolyTrinity-Benchmark",
+    "sha256": "0dbdc0b9471faefa50e7d08a08c6676b18710d1bf23d32ce72fe4c25d146f721"
+  }
+}

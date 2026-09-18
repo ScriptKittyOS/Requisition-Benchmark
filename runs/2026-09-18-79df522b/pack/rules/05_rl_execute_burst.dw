@@ -1,0 +1,9 @@
+// The reverse-direction census entry (spec §4 T4, "record at least one"): a rate limit
+// Dogwood states in one rule -- the fourth Execute by one principal inside ten minutes is
+// refused (self-inclusive count: the fourth sees 4). Our plane's W3 has `cooldown` (N = 1)
+// and positive `count_within` preconditions; "deny when >= N" is the hand-composed
+// Approvals.rapid_approval_pattern?/3 (G-144's named exception). Recorded as a property
+// Dogwood says more naturally.
+@id("rl_execute_burst")
+forbid (principal, action == Req::Action::"Execute", resource)
+when temporal { 3 < count for (t: Timepoint). where (formerly within 10m (Req::Action::"Execute"::request{ callerPrincipal: principal } && tp(t))) };

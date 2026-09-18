@@ -1,13 +1,13 @@
 # Authoring a pack against these traces
 
 A **pack** is a set of Dogwood rules that judge the same traces the plane was driven through. The
-pack in `runs/2026-09-17-49489219/pack/` is ours. Anyone can write another against the same contract and
+pack in `runs/<run id>/pack/` is ours. Anyone can write another against the same contract and
 compare its verdicts with the plane's evidence, offline, with nothing but this package and a Dogwood
 binary built at the pinned commit.
 
 ## The contract (what a rule may name)
 
-Everything below is read off the files in `pack-source/` and `runs/2026-09-17-49489219/pack/`; those files
+Everything below is read off the files in `pack-source/` and `runs/<run id>/pack/`; those files
 are the contract, this page only points at them.
 
 - **The schema**: `pack/schema.cedarschema` — namespace `Req`; entities `User`, `Agent`, `System`,
@@ -24,7 +24,7 @@ are the contract, this page only points at them.
 - **The horizon**: every window in our rules is `within 24h`, the plane's authority TTL; the event
   schema's `max_window` bounds what a rule may ask for (the census entry
   `pack-source/census/E6_standing_authority_365d.*` shows the validator refusing `365d`).
-- **The traces**: `runs/2026-09-17-49489219/traces/<trial>.log`, one per scenario, exactly what the plane
+- **The traces**: `runs/<run id>/traces/<trial>.log`, one per scenario, exactly what the plane
   exported; a line is `@<unix seconds> scope(principal: …, resource: …) request_context(input: {…})`
   followed by the event. The instants are the campaign's pinned clock, not wall time.
 - **The rule files**: one statement per file, one `@id("…")` matching the filename's `<id>`, in
@@ -36,10 +36,10 @@ are the contract, this page only points at them.
 ## Compare a pack with the plane, offline
 
     dogwood replay <your-pack>.dw --policy-schema pack/schema.cedarschema \
-        --event-schema pack/events.dwschema --trace runs/2026-09-17-49489219/traces/<trial>.log --format json
+        --event-schema pack/events.dwschema --trace runs/<run id>/traces/<trial>.log --format json
 
 For each trial, the plane's side is `requisition.evidence` and `requisition.denial_code` in
-`runs/2026-09-17-49489219/trials.jsonl`; the subject event is the last decision line of the trace.
+`runs/<run id>/trials.jsonl`; the subject event is the last decision line of the trace.
 `verify_dogwood_side.py` shows the exact command line and the verdict-vector shape it compares.
 
 ## Running a foreign pack as a campaign run

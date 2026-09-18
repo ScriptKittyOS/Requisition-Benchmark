@@ -1,0 +1,83 @@
+// Assembled by AutonomousAgency.Campaigns.Dogwood.Pack -- do not edit; edit the rules.
+// [0] rules/00_f5_two_person_execute.dw sha256=81cb7cd979052d661dae5b23e1d39e58720d128c9bd55f3e35099f702e706146
+// F5 (spec-level): an Execute bound to an approval is permitted only if that approval was
+// Approved AND Coapproved by two DISTINCT principals within the authority's validity, with
+// the same payload hash the Execute carries (F4's binding is the payload_hash pin on both
+// seats). "Distinct" is `a != b` over the two seats' callerPrincipal -- two different
+// strings; whether either string is an authenticated principal is the trace author's word
+// (E3, expressible-but-unenforceable). The window is the authority TTL
+// (ApprovalBinding.authority_ttl_seconds/0), tied by PackTest P8.
+// SCOPE (REQ-139, D-18, 2026-09-17): each seat is also pinned to the Execute's `scope` -- the
+// account the evidence was recorded under -- the way approval_id and payload_hash are. The first
+// pack did not pin it, and A's seats spliced onto B's Execute ALLOWED (G-191; the exhibit under
+// pack/census/R1_scope_unbound_first_pack/). Nothing in the language required the pin.
+@id("f5_two_person_execute")
+permit (principal is Req::Agent, action == Req::Action::"Execute", resource is Req::Approval)
+when temporal {
+    exists (a: Req::User). exists (b: Req::User). (
+        formerly within 24h Req::Action::"Approve"::response{
+            input.approval_id: context.input.approval_id, input.payload_hash: context.input.payload_hash, input.scope: context.input.scope, callerPrincipal: a }
+        && formerly within 24h Req::Action::"Coapprove"::response{
+            input.approval_id: context.input.approval_id, input.payload_hash: context.input.payload_hash, input.scope: context.input.scope, callerPrincipal: b }
+        && a != b
+    )
+};
+
+// [1] rules/01_f5_not_revoked.dw sha256=2fa4b1c3adf18324db13f8a908d639b062ba8cc0e3ca4b5a2e05922f01c8eeef
+// F5 revocation (spec-level): a Revoke on an approval is TERMINAL -- once revoked, nothing
+// grants under that approval_id again, whatever seats were or are later posted. That is our
+// plane's rule: `revoked` is a terminal status (approval_request.ex @terminal_statuses) that
+// no path re-opens -- a later approve, revoke or expire answers :already_decided
+// (approvals.ex:1188, :619, :646), a later coapprove :primary_approval_required (:469) -- so
+// the pack says it directly: forbid while a Revoke for this approval lies in the horizon. The plan's first encoding was the open-session idiom (`!Revoke since within W
+// Approve`, Dogwood's access_not_revoked_since_grant example); the fix review of 710db46 (3)
+// replayed Approve / Coapprove / Revoke / one fresh Approve to ALLOW under it -- the
+// pre-revocation Coapprove resurrected the grant -- and a per-seat conjunct made this rule fire
+// on a MISSING seat, restating rule 00. Neither is what revocation means here.
+// The horizon: a Revoke older than W is not seen, so fresh seats after a stale Revoke allow
+// (bundle stale-revoke-allow); in our plane that shape is unreachable (terminal), it is
+// recorded as the constant-horizon limit G-174 names.
+@id("f5_not_revoked")
+forbid (principal, action == Req::Action::"Execute", resource)
+when temporal {
+    formerly within 24h Req::Action::"Revoke"::response{ input.approval_id: context.input.approval_id }
+};
+
+// [2] rules/02_f7_execute_once_per_key.dw sha256=37e54f4b749eb8f5701de1f8696a8efd006e7838c0acf06ba2bf7002f6ceb40d
+// F7 (spec-level): an idempotency key executes at most once. Dogwood's `formerly` scans
+// j in [0, i] -- the current decision event sees itself (eval.rs:527) -- so the spec's
+// `unless formerly Execute{key}` would deny the FIRST execute too. A self-inclusive count is
+// the honest form: the first Execute with a key counts 1, the second counts 2 and is refused.
+@id("f7_execute_once_per_key")
+forbid (principal, action == Req::Action::"Execute", resource)
+when temporal { 1 < count for (t: Timepoint). where (formerly within 24h (
+    Req::Action::"Execute"::request{ input.idempotency_key: context.input.idempotency_key } && tp(t))) };
+
+// [3] rules/03_f7_replay_of_executed_key.dw sha256=131af7ee91bc41ab663a42838b2a16ea034792cb523de1dfb3af7fab0d26cba4
+// F7, the Replay event: a Replay carrying a key already Executed is refused. Stated for the
+// record: the pack carries no permit for Replay, so every Replay is DENY with or without this
+// rule -- what this rule adds is a NAMED forbid in determining_rules (a DENY produced by a
+// firing forbid carries its index; an implicit deny carries none -- measured 2026-09-16,
+// correcting Phase 0's "DENY carries none", which measured implicit denies only).
+@id("f7_replay_of_executed_key")
+forbid (principal, action == Req::Action::"Replay", resource)
+when temporal { formerly within 24h Req::Action::"Execute"::request{ input.idempotency_key: context.input.idempotency_key } };
+
+// [4] rules/04_cedar_bound.dw sha256=403706ed0f70bb7104e9bfdbd8e7225aa9d158a1f5c4fd8174460c9a89f09e84
+// A pure-Cedar condition over the request_context bag: an Execute that names no approval
+// ("unbound", the exporter's marker for a call the router bound to nothing) is refused here,
+// Cedar-side. It exists so the T3a trap (a field supplied to the logged bag only) has a
+// Cedar-side check to be blind to, and as the T2 `cedar_failed` probe's subject.
+@id("cedar_bound")
+forbid (principal, action == Req::Action::"Execute", resource) when { context.input.approval_id == "unbound" };
+
+// [5] rules/05_rl_execute_burst.dw sha256=e3a514cb8b4ae68a5a47250578d59ee46bbf2255377dfc0d023afd1b2d08645b
+// The reverse-direction census entry (spec §4 T4, "record at least one"): a rate limit
+// Dogwood states in one rule -- the fourth Execute by one principal inside ten minutes is
+// refused (self-inclusive count: the fourth sees 4). Our plane's W3 has `cooldown` (N = 1)
+// and positive `count_within` preconditions; "deny when >= N" is the hand-composed
+// Approvals.rapid_approval_pattern?/3 (G-144's named exception). Recorded as a property
+// Dogwood says more naturally.
+@id("rl_execute_burst")
+forbid (principal, action == Req::Action::"Execute", resource)
+when temporal { 3 < count for (t: Timepoint). where (formerly within 10m (Req::Action::"Execute"::request{ callerPrincipal: principal } && tp(t))) };

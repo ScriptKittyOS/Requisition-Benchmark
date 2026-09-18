@@ -40,6 +40,16 @@ What is re-derived (every value read from the records, never typed here):
      The fixture bundles under `fixtures/` are Elixir-rendered traces (`trace.exs`) that need the
      campaign harness to render; they are not re-run here, and this is said.
 
+  7. With `--verifier` and `--registry` (the PUBLIC verify_receipt.py and the published evaluation
+     registry from HolyTrinity-Benchmark, obtained independently of this package), every scored
+     row's `receipts/<trial>.json` is checked: the registry names the key, every receipt's
+     signature verifies, the chain links (sequence, previous_hash), the subject receipt commits to
+     the exported redacted event (proof_hash), and the SIGNED status and refusal code equal what
+     trials.jsonl records; a receipt from another row fails (the run id in every chain_scope is
+     the trace's agent principal). This proves the allow/deny and the code are what THIS plane
+     signed under a published key, hash-chained -- inspectable, not re-executable. A run without
+     receipts/ (v0.1.0) says so and passes; receipts present without a verifier is REFUSED.
+
 What is NOT re-derived, stated: the Requisition side (`requisition.*` on every row, the plane's
 refusals and codes) was produced by the authority plane's own code and cannot be re-run from
 this directory; this script reads it only to re-add the counts.
@@ -146,6 +156,8 @@ def main():
     ap.add_argument("run_dir")
     ap.add_argument("--dogwood", required=True, help="the dogwood executable built at run.json's dogwood_sha")
     ap.add_argument("--pack-source", default=None, help="the pack source directory (rules/, fixtures/, census/) the report's section e cites")
+    ap.add_argument("--verifier", default=None, help="the public receipt verifier (HolyTrinity-Benchmark receipt-verification/verifier/verify_receipt.py)")
+    ap.add_argument("--registry", default=None, help="the published key registry, obtained INDEPENDENTLY of this package (receipt-verification/keys/evaluation-registry.json)")
     args = ap.parse_args()
     d = os.path.abspath(args.run_dir)
     for f in ("run.json", "trials.jsonl", "t2-provenance.json", "SHA256SUMS", "pack/manifest.json", "pack/pack.dw", "pack/schema.cedarschema", "pack/events.dwschema"):
@@ -317,6 +329,90 @@ def main():
                 recorded = canonical_verdicts(json.load(open(os.path.join(r1, "replay.json"))).get("verdicts"))
                 check("R1 exhibit: the first pack replays the spliced trace to its recorded verdicts (allow on rule 0)", recorded, live)
         print("  fixtures/ (Elixir-rendered trace.exs bundles) need the campaign harness to render and are not re-run here")
+
+    # ---- 7. the plane's verdict, checkable: the receipts (REQ-144) ----------------------------
+    # Per scored row, the run may carry receipts/<trial>.json: the run's receipt chain (signed by
+    # the plane under a key a PUBLISHED registry names) and the redacted subject event it commits
+    # to. What this proves, exactly: the allow/deny and the refusal code in trials.jsonl are what
+    # this plane SIGNED, under that key, hash-chained -- inspectable, not re-executable. The
+    # verifier and the registry are the public ones, supplied by the reader, never taken from
+    # this package (the registry travels here only as registry-used.json, a claim this step checks
+    # against the registry you supply). proof_hash stays opaque: the hashed preimage is not shipped.
+    print("== 7. receipts: the plane's signed verdict ==")
+    receipts_dir = os.path.join(d, "receipts")
+    declared = (run.get("receipts") or {}).get("registry")
+    if not os.path.isdir(receipts_dir):
+        if declared:
+            check("receipts: a run that names a registry carries receipts/", True, False)
+        else:
+            print("  no receipts/ in this run (run.json names no registry: the v0.1.0 shape); nothing to verify here")
+    else:
+        if not (args.verifier and args.registry):
+            refuse("receipts/ is present: --verifier and --registry are required (the receipt step is never skipped)")
+        if not os.path.isfile(args.verifier) or not os.path.isfile(args.registry):
+            refuse("no such verifier or registry file")
+        used_path = os.path.join(d, "registry-used.json")
+        if not os.path.isfile(used_path):
+            refuse("receipts/ is present but registry-used.json is not")
+        used = json.load(open(used_path))
+        registry = json.load(open(args.registry))
+        entry = next((e for e in registry.get("entries", []) if e.get("key_id") == used.get("key_id")), None)
+        check("registry-used: the key id is in the registry you supplied", True, entry is not None)
+        check("registry-used: the public key equals the registry's entry", (entry or {}).get("public_key"), used.get("public_key"))
+        check("registry-used: run.json names the same registry", declared, used)
+        verified_rows = 0
+        for t in trials:
+            tid = t["trial_id"]
+            path = os.path.join(receipts_dir, f"{tid}.json")
+            if not os.path.isfile(path):
+                check(f"{tid}: receipts file present", True, False)
+                continue
+            r = json.load(open(path))
+            check(f"{tid}: the receipts file names this row (a receipt from another row fails here)", tid, r.get("trial_id"))
+            run_uuid = r.get("agent_run_id") or ""
+            trace_path = os.path.join(d, t["dogwood"].get("trace_ref") or "")
+            trace_text = open(trace_path).read() if os.path.isfile(trace_path) else ""
+            check(f"{tid}: the trace's agent principal is the receipts' run", True, bool(run_uuid) and (f'Req::Agent::"{run_uuid}"' in trace_text))
+            chain = r.get("receipts") or []
+            check(f"{tid}: at least one receipt", True, len(chain) >= 1)
+            prev_hash = None
+            prev_seq = None
+            subject_ok = False
+            for rc in chain:
+                tmp_path = os.path.join(d, ".receipt-under-test.json")
+                with open(tmp_path, "w") as f:
+                    json.dump({k: rc[k] for k in ("key_id", "receipt_hash", "signature", "signed_payload")}, f)
+                try:
+                    v = subprocess.run([sys.executable, args.verifier, "--receipt", tmp_path, "--registry", args.registry], capture_output=True, text=True, timeout=60)
+                finally:
+                    os.remove(tmp_path)
+                check(f"{tid}: receipt {rc.get('sequence')} verifies (registry -> signature)", 0, v.returncode)
+                signed = json.loads(rc["signed_payload"])
+                check(f"{tid}: receipt {rc.get('sequence')} key id is the registry-used key", used.get("key_id"), rc.get("key_id"))
+                check(f"{tid}: receipt {rc.get('sequence')} chain_scope names this row's run", True, f"run:{run_uuid}" in (signed.get("chain_scope") or ""))
+                if prev_seq is not None:
+                    check(f"{tid}: receipt {rc.get('sequence')} follows {prev_seq} (sequence)", prev_seq + 1, signed.get("sequence"))
+                    check(f"{tid}: receipt {rc.get('sequence')} links to the previous receipt (previous_hash)", prev_hash, signed.get("previous_hash"))
+                prev_seq, prev_hash = signed.get("sequence"), rc.get("receipt_hash")
+                if signed.get("subject_id") == (r.get("subject") or {}).get("id"):
+                    subject_ok = True
+                    md = signed.get("metadata") or {}
+                    subj = r["subject"]
+                    check(f"{tid}: the subject receipt commits to the exported event (proof_hash)", subj.get("proof_hash"), md.get("proof_hash"))
+                    check(f"{tid}: the subject receipt's signed event type", subj.get("event_type"), md.get("event_type"))
+                    ev = t["requisition"].get("evidence")
+                    expected_status = {"denied": "denied", "succeeded": "succeeded", "replayed": "replayed"}.get(ev)
+                    expected_types = {"denied": ("policy.blocked", "tool.replay_denied"), "succeeded": ("tool.succeeded",), "replayed": ("tool.replayed",)}.get(ev, ())
+                    check(f"{tid}: the SIGNED status matches trials.jsonl ({ev})", expected_status, md.get("status"))
+                    check(f"{tid}: the SIGNED event type is one the evidence '{ev}' allows", True, md.get("event_type") in expected_types)
+                    if ev == "denied":
+                        check(f"{tid}: the SIGNED code matches trials.jsonl's denial_code", t["requisition"].get("denial_code"), md.get("code"))
+                    else:
+                        check(f"{tid}: no signed code on a non-refusal", None, md.get("code"))
+                    check(f"{tid}: the receipts file's own requisition block matches trials.jsonl", (ev, t["requisition"].get("denial_code")), ((r.get("requisition") or {}).get("evidence"), (r.get("requisition") or {}).get("denial_code")))
+            check(f"{tid}: a receipt for the subject event is in the chain", True, subject_ok)
+            verified_rows += 1
+        print(f"  receipts: {verified_rows} row(s) verified against {os.path.basename(args.registry)} with {os.path.basename(args.verifier)}; proof_hash is opaque (the hashed preimage is not shipped)")
 
     print(f"checks: {checked}; findings: {len(findings)}")
     if findings:

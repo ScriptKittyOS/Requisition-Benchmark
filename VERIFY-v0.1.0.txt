@@ -1,5 +1,5 @@
-run: <package>/runs/2026-09-18-79df522b
-run_id 2026-09-18-79df522b; tree_sha 79df522bb6125b0a87629f89f50dd9a94b743d96; status complete; recorded 28
+run: <package>/runs/2026-09-17-49489219
+run_id 2026-09-17-49489219; tree_sha 49489219795d6bea7b534a486d700c7f9b901e7f; status complete; recorded 28
 dogwood commit to build: fa7a32370a642b32b54c73c16fd75bc88c847050 (this script cannot read a commit out of the binary; the reader builds it)
 binary: <dogwood> sha256 0fb979e9b14bb8fda929d9411e52aa7cff1d23820c2292f75dabe4f7bd0c7bbd; --version: dogwood 1.0.0
 == 1. digests ==
@@ -39,6 +39,6 @@ binary: <dogwood> sha256 0fb979e9b14bb8fda929d9411e52aa7cff1d23820c2292f75dabe4f
 == 6. pack source: the census's rejected encodings and the R1 exhibit ==
   fixtures/ (Elixir-rendered trace.exs bundles) need the campaign harness to render and are not re-run here
 == 7. receipts: the plane's signed verdict ==
-  receipts: 28 row(s) verified against evaluation-registry.json with verify_receipt.py; proof_hash is opaque (the hashed preimage is not shipped)
-checks: 1169; findings: 0
+  no receipts/ in this run (run.json names no registry: the v0.1.0 shape); nothing to verify here
+checks: 317; findings: 0
 VERIFY DOGWOOD SIDE: PASS

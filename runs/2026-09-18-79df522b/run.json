@@ -1,0 +1,253 @@
+{
+  "agreements": {
+    "agree": 14,
+    "disagree_dogwood_allows": 8,
+    "disagree_dogwood_denies": 6
+  },
+  "catalogue": [
+    "T1-F5-no-coapproval-001",
+    "T1-F5-same-approver-001",
+    "T1-F5-same-approver-002",
+    "T1-F5-distinct-coapprover-001",
+    "T1-F5-expired-ttl-001",
+    "T1-F5-expired-explicit-001",
+    "T1-F5-expired-boundary-001",
+    "T1-F5-revoked-001",
+    "T1-F5-approver-revoked-001",
+    "T1-F5-kill-switch-001",
+    "T1-F5-coapprove-after-expiry-001",
+    "T1-F4-cross-scope-001",
+    "T1-F7-replay-2-001",
+    "T1-F7-replay-3-001",
+    "T1-F7-replay-5-001",
+    "T1-F7-replay-10-001",
+    "T1-F7-replay-after-revoke-001",
+    "T1-F7-one-approval-two-keys-001",
+    "T1-F7-retry-after-refusal-001",
+    "T1-F4-payload-swap-001",
+    "T1-F4-payload-swap-002",
+    "T4-E3-sybil-001",
+    "T4-R1-rate-limit-001",
+    "T3-A1-logged-bag-only-001",
+    "T3-B1-context-bag-only-001",
+    "T3-C1-unqualified-action-001",
+    "T3-D1-backdated-execute-001",
+    "T3-E1-undeclared-action-001"
+  ],
+  "dogwood_bin": {
+    "sha256": "0fb979e9b14bb8fda929d9411e52aa7cff1d23820c2292f75dabe4f7bd0c7bbd",
+    "size": 21993568,
+    "toolchain_now": {
+      "cargo": "cargo 1.92.0 (344c4567c 2025-10-21)",
+      "rustc": "rustc 1.92.0 (ded5c06cf 2025-12-08)"
+    },
+    "version": "dogwood 1.0.0"
+  },
+  "dogwood_sha": "fa7a32370a642b32b54c73c16fd75bc88c847050",
+  "format": "crossplane-dogwood.v1",
+  "halted_on": null,
+  "pack_sha256": "98394c1deb950dc8c3f45cf9659516904817dd82b8534ca3c70a27d78a1c924e",
+  "qualification": {
+    "determinism": {
+      "failing_by_run": [
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ],
+        [
+          "AutonomousAgency.AI.RuntimeContextRegionTest"
+        ]
+      ],
+      "name_identical": true,
+      "partition": "q79df522b",
+      "record": [
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 1,
+          "seed": 82963,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "23:04:12Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 2,
+          "seed": 190475,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "23:11:15Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 3,
+          "seed": 216680,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "23:18:18Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 4,
+          "seed": 959670,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "23:25:26Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 5,
+          "seed": 428073,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "23:32:28Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 6,
+          "seed": 274253,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "23:39:30Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 7,
+          "seed": 678914,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "23:46:27Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 8,
+          "seed": 362022,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "23:53:28Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 9,
+          "seed": 607936,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "00:00:27Z",
+          "verdict": "GATE VERDICT: PASS"
+        },
+        {
+          "exit": 0,
+          "failing": [
+            "AutonomousAgency.AI.RuntimeContextRegionTest"
+          ],
+          "run": 10,
+          "seed": 349054,
+          "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+          "utc": "00:07:22Z",
+          "verdict": "GATE VERDICT: PASS"
+        }
+      ],
+      "runs": 10
+    },
+    "filed_reds": {
+      "last_line": "FILED REDS: PASS",
+      "summary": "10 tests, 10 failures (4630 excluded)"
+    },
+    "gate": {
+      "filed": [
+        "AutonomousAgency.AI.RuntimeContextRegionTest"
+      ],
+      "seed": 105914,
+      "summary": "8 properties, 4622 tests, 1 failure (10 excluded)",
+      "verdict": "GATE VERDICT: PASS"
+    },
+    "readings": {
+      "filed_reds": {
+        "file": "filed_reds.txt",
+        "sha256": "3a56b16c4f0c57c276abc09fb0ec44d15caebbbb77d5cbd746b6ed60dc6ad302"
+      },
+      "gate": {
+        "file": "gate.txt",
+        "sha256": "968e26ce577b5db319e599076da3b7829e221e09bbfc2fbe03f9fdfef317143d"
+      },
+      "gate_raw": {
+        "file": "gate_raw.txt",
+        "sha256": "8546d36fba1f09db724523c34c379af0e551a3f7b9a5a261653362e379d582a4"
+      },
+      "ten_runs": {
+        "file": "ten_runs.txt",
+        "sha256": "3d0cef55b2516d419748c81ecd7f3b25abfd8799ba0f0e02e2950343f4d8c969"
+      }
+    },
+    "record_sha256": "7ae02e3548bfb75fc593ebd78ccaa2dd6534dbf6a85335e199594792510c6d0e",
+    "tree_sha": "79df522bb6125b0a87629f89f50dd9a94b743d96"
+  },
+  "qualified_sha": "79df522bb6125b0a87629f89f50dd9a94b743d96",
+  "receipts": {
+    "key_id": "evaluation_ed25519_v1",
+    "registry": {
+      "key_id": "evaluation_ed25519_v1",
+      "public_key": "V5duQnl28gXwddsXpNZqVnskQFcVjXbt+Fob98ZORN0=",
+      "registry": {
+        "commit": "d19945c5647d8e59b18bc7ec242ca39fbd2162ff",
+        "path": "receipt-verification/keys/evaluation-registry.json",
+        "repository": "https://github.com/ScriptKittyOS/HolyTrinity-Benchmark",
+        "sha256": "0dbdc0b9471faefa50e7d08a08c6676b18710d1bf23d32ce72fe4c25d146f721"
+      }
+    }
+  },
+  "recorded": 28,
+  "reproducibility": "same tree_sha + dogwood_sha + pack_sha256 + catalogue => trials.jsonl and t2-provenance.json byte-identical (no run id, UUID or wall clock in a record); raw traces carry UUIDs, their shape hashes are the handle",
+  "run_id": "2026-09-18-79df522b",
+  "status": "complete",
+  "tree_dirty": false,
+  "tree_sha": "79df522bb6125b0a87629f89f50dd9a94b743d96"
+}
