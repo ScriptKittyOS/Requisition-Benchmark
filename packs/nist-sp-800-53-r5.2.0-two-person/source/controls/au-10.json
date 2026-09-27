@@ -1,0 +1,216 @@
+{
+  "class": "SP800-53",
+  "id": "au-10",
+  "links": [
+    {
+      "href": "#678e3d6c-150b-4393-aec5-6e3481eb1e00",
+      "rel": "reference"
+    },
+    {
+      "href": "#eea3c092-42ed-4382-a6f4-1adadef01b9d",
+      "rel": "reference"
+    },
+    {
+      "href": "#7c37a38d-21d7-40d8-bc3d-b5e27eac17e1",
+      "rel": "reference"
+    },
+    {
+      "href": "#a295ca19-8c75-4b4c-8800-98024732e181",
+      "rel": "reference"
+    },
+    {
+      "href": "#1c71b420-2bd9-4e52-9fc8-390f58b85b59",
+      "rel": "reference"
+    },
+    {
+      "href": "#au-9",
+      "rel": "related"
+    },
+    {
+      "href": "#pm-12",
+      "rel": "related"
+    },
+    {
+      "href": "#sa-8",
+      "rel": "related"
+    },
+    {
+      "href": "#sc-8",
+      "rel": "related"
+    },
+    {
+      "href": "#sc-12",
+      "rel": "related"
+    },
+    {
+      "href": "#sc-13",
+      "rel": "related"
+    },
+    {
+      "href": "#sc-16",
+      "rel": "related"
+    },
+    {
+      "href": "#sc-17",
+      "rel": "related"
+    },
+    {
+      "href": "#sc-23",
+      "rel": "related"
+    }
+  ],
+  "params": [
+    {
+      "guidelines": [
+        {
+          "prose": "actions to be covered by non-repudiation are defined;"
+        }
+      ],
+      "id": "au-10_odp",
+      "label": "actions",
+      "props": [
+        {
+          "name": "alt-identifier",
+          "value": "au-10_prm_1"
+        },
+        {
+          "class": "sp800-53",
+          "name": "alt-label",
+          "value": "actions to be covered by non-repudiation"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AU-10_ODP"
+        }
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "au-10_smt",
+      "name": "statement",
+      "prose": "Provide irrefutable evidence that an individual (or process acting on behalf of an individual) has performed {{ insert: param, au-10_odp }}."
+    },
+    {
+      "id": "au-10_gdn",
+      "name": "guidance",
+      "prose": "Types of individual actions covered by non-repudiation include creating information, sending and receiving messages, and approving information. Non-repudiation protects against claims by authors of not having authored certain documents, senders of not having transmitted messages, receivers of not having received messages, and signatories of not having signed documents. Non-repudiation services can be used to determine if information originated from an individual or if an individual took specific actions (e.g., sending an email, signing a contract, approving a procurement request, or receiving specific information). Organizations obtain non-repudiation services by employing various techniques or mechanisms, including digital signatures and digital message receipts."
+    },
+    {
+      "id": "au-10_obj",
+      "links": [
+        {
+          "href": "#au-10_smt",
+          "rel": "assessment-for"
+        }
+      ],
+      "name": "assessment-objective",
+      "props": [
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AU-10"
+        }
+      ],
+      "prose": "irrefutable evidence is provided that an individual (or process acting on behalf of an individual) has performed {{ insert: param, au-10_odp }}."
+    },
+    {
+      "id": "au-10_asm-examine",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Audit and accountability policy\n\nsystem security plan\n\nprivacy plan\n\nprocedures addressing non-repudiation\n\nsystem design documentation\n\nsystem configuration settings and associated documentation\n\nsystem audit records\n\nother relevant documents or records"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "EXAMINE"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AU-10-Examine"
+        }
+      ]
+    },
+    {
+      "id": "au-10_asm-interview",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Organizational personnel with information security and privacy responsibilities\n\nsystem/network administrators\n\nsystem developers"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "INTERVIEW"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AU-10-Interview"
+        }
+      ]
+    },
+    {
+      "id": "au-10_asm-test",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Mechanisms implementing non-repudiation capability"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "TEST"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AU-10-Test"
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "class": "zero-padded",
+      "name": "label",
+      "value": "AU-10"
+    },
+    {
+      "name": "label",
+      "value": "AU-10"
+    },
+    {
+      "class": "sp800-53a",
+      "name": "label",
+      "value": "AU-10"
+    },
+    {
+      "name": "sort-id",
+      "value": "au-10"
+    },
+    {
+      "name": "implementation-level",
+      "ns": "http://csrc.nist.gov/ns/rmf",
+      "value": "system"
+    },
+    {
+      "name": "contributes-to-assurance",
+      "ns": "http://csrc.nist.gov/ns/rmf",
+      "value": "true"
+    }
+  ],
+  "title": "Non-repudiation"
+}

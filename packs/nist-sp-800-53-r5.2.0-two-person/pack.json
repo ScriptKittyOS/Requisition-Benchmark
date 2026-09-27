@@ -1,0 +1,59 @@
+{
+  "id": "nist-sp-800-53-r5.2.0-two-person",
+  "version": "0.2.0",
+  "title": "NIST SP 800-53 Release 5.2.0 -- the two-person deployment class, 28 scenarios",
+  "class": "two-person",
+  "contract": "docs/internal/benchmark-specification-authorization-planes-2026-09-19.md#the-pack-contract",
+  "authors": [
+    {
+      "name": "Ayla Croft",
+      "role": "the plane's author -- the conflict the contract names; every derivation is a claim until reviewed"
+    }
+  ],
+  "ceilings": {
+    "unresolvable_share": {
+      "numerator": 1,
+      "denominator": 24,
+      "note": "One unresolvable row in the 24 SCORED POLICY rows (`scored_policy_rows.count`); the four harness_encoding rows are not scored as policy rows and are not in the denominator. Recorded honestly: `Pack.check/1` evaluates the ceiling against the FULL 28-row count, which is marginally more permissive than the denominator declared here. With one unresolvable row both readings pass, and the difference is written down rather than smoothed over. Set by the pack's author at registration; revised by erratum."
+    },
+    "harness_error_share": {
+      "numerator": 0,
+      "denominator": 28
+    }
+  },
+  "codes": {
+    "source": "AutonomousAgency.Authority.DenialTaxonomy",
+    "extra": {
+      "replayed": "An EXTRA OUTCOME CODE, declared here and NOT a member of the denial taxonomy in source/denial_codes.json. The plane's evidence class for a served replay: no second effect occurred and the first effect's receipt was returned (G-141). The pack scores a replay row as `deny` on it because the rule's question is whether a SECOND EFFECT occurred, and none did."
+    },
+    "contract": "A row's `refusal_code` may name EITHER a code from source/denial_codes.json (the plane's denial taxonomy) OR an extra outcome code declared in `codes.extra` above. Both are checked: `Pack.check/1` refuses `refusal_code_unknown` for anything in neither set, so the permission is enforced and not merely documented. This is stated because the 2026-09-26 independent review found `replayed` used in four rows and absent from the denial vocabulary, with nothing in the contract saying that was allowed."
+  },
+  "draw": {
+    "kind": "fixed-instances",
+    "note": "no generators: the registered draw is v0.2.0's catalogue, one instance per family, frozen before its run",
+    "catalogue": "test/support/campaigns/dogwood/catalogue.ex",
+    "catalogue_frozen_at": "22216be",
+    "run": "artifacts/crossplane-dogwood/2026-09-18-79df522b"
+  },
+  "predicate_classes": [
+    "extreme_risk"
+  ],
+  "review_policy": "REVIEW-POLICY.md",
+  "under_test": {
+    "note": "What each row puts under test, per the test-oracle taxonomy (Barr et al., 'The Oracle Problem in Software Testing'). A row whose decisive fact the system under test cannot sense is testing the RULE, not the system's sensing, and must say so. Declared per row and checked: a `rule_adjudication` row whose counterfactual does not flip the verdict is refused.",
+    "classes": {
+      "rule_adjudication": "The verdict follows from the pinned rule applied to the stated facts. Scored as a policy row.",
+      "rule_silence": "No pinned rule speaks to the decisive fact; the correct verdict is `unresolvable`. Scored as a policy row.",
+      "harness_encoding": "The defect is in the comparator's trace ENCODING, not in the authorization. NOT scored as a policy row. Each of these rows carries a counterfactual that deliberately does NOT flip the verdict, which is the evidence for the classification rather than an opinion about it."
+    },
+    "counts": {
+      "harness_encoding": 4,
+      "rule_adjudication": 23,
+      "rule_silence": 1
+    }
+  },
+  "scored_policy_rows": {
+    "count": 24,
+    "note": "The four `harness_encoding` rows stay in the pack as conformance diagnostics and are reported apart from the policy score, as the first independent review asked. Removing them from the pack would lose a real finding about the comparator; scoring them as NIST policy rows would misreport what they measure."
+  }
+}

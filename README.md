@@ -91,3 +91,53 @@ directory was laid under `runs/`, and `README-verification.md` was edited after 
 is not re-cut. The files themselves are what the tag says; the run directory's own `SHA256SUMS`
 verifies, and `VERIFY.txt` at the tag is the reader's transcript from this layout. From v0.2.0 the
 sums are taken over the repository as laid out and cover the v0.1.0 run too: check out `v0.2.0`.
+
+---
+
+## The NIST SP 800-53 two-person pack — independently reviewed
+
+`packs/nist-sp-800-53-r5.2.0-two-person/` is a **rule pack**: 28 pre-registered scenarios, each
+pairing a cited NIST control with an expected verdict, so that an authorization plane can be scored
+against a rule rather than against another implementation.
+
+**It has been independently reviewed.** Zaid Hasan Khan, Independent Healthcare AI Reliability
+Evaluator, **2026-09-26: 28 of 28 expected verdicts agreed, 0 disputed.** The review file is
+[`packs/nist-sp-800-53-r5.2.0-two-person/reviews/zaid-hasan-khan.json`](packs/nist-sp-800-53-r5.2.0-two-person/reviews/zaid-hasan-khan.json).
+
+It is bound to exact bytes, so an edit to any reviewed file invalidates it by name rather than
+carrying it silently forward:
+
+| | |
+|---|---|
+| `scenarios_sha256` | `93bd5e61fb0c22f5a17eda125bb43765508910e4081d71a00d82f659ef14ecbc` |
+| `reviewed_pack_sha256` | `b7f40323050ef887863138866ae6ed1ea42b7a911d340165e7b3af36c4008517` |
+
+**What the review covers, and what it does not.** It answers one question: can each pre-registered
+expected verdict be independently derived from the cited rule text, the pinned parameters, the typed
+facts, the shipped provenance and the other materials inside the packet? The answer was yes, 28 of
+28, with residual verdict non-derivability 0 of 28.
+
+**It is not a certification of any authorization plane, of Requisition, of any implementation, or of
+the normative correctness of the deployment policies the pack pins.** A reviewed benchmark is easy
+to mistake for a reviewed system; it is not one.
+
+**No plane has been scored against this pack.** The pack is published as a reviewed instrument. It
+is not registered, no scoring run has been performed against it, and no result is claimed here.
+
+### Reading the pack
+
+- `scenarios.jsonl` — the 28 rows: cited control, rule text, typed facts, expected verdict and code.
+- `facts/dimensions.json` — the closed vocabulary the facts are typed against.
+- `facts/decision.json` — the ordered rule list that **derives** each expected verdict from the row's
+  own facts, so the answers are computed rather than asserted.
+- `source/` — the six relied-on NIST controls as shipped OSCAL subtrees, with digests, plus the
+  organization-defined parameters and deployment policies the pack pins.
+- `provenance/` — for each row, the pre-registered catalogue entry and drive, sliced verbatim out of
+  a frozen commit, so a stipulated fact can be checked against its source.
+- `ERRATA.md` — every correction, dated, append-only.
+
+**One path note.** Each row's `trace.ref` reads
+`artifacts/crossplane-dogwood/2026-09-18-79df522b/traces/…`, which is the path in the authoring tree.
+In this repository the same files are at `runs/2026-09-18-79df522b/traces/…` and are **byte-identical** —
+every `trace.sha256` in the pack verifies against them. The refs are left unedited because editing a
+reviewed file would invalidate the review.

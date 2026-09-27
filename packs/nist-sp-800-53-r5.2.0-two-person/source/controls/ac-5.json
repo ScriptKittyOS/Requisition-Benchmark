@@ -1,0 +1,279 @@
+{
+  "class": "SP800-53",
+  "id": "ac-5",
+  "links": [
+    {
+      "href": "#ac-2",
+      "rel": "related"
+    },
+    {
+      "href": "#ac-3",
+      "rel": "related"
+    },
+    {
+      "href": "#ac-6",
+      "rel": "related"
+    },
+    {
+      "href": "#au-9",
+      "rel": "related"
+    },
+    {
+      "href": "#cm-5",
+      "rel": "related"
+    },
+    {
+      "href": "#cm-11",
+      "rel": "related"
+    },
+    {
+      "href": "#cp-9",
+      "rel": "related"
+    },
+    {
+      "href": "#ia-2",
+      "rel": "related"
+    },
+    {
+      "href": "#ia-4",
+      "rel": "related"
+    },
+    {
+      "href": "#ia-5",
+      "rel": "related"
+    },
+    {
+      "href": "#ia-12",
+      "rel": "related"
+    },
+    {
+      "href": "#ma-3",
+      "rel": "related"
+    },
+    {
+      "href": "#ma-5",
+      "rel": "related"
+    },
+    {
+      "href": "#ps-2",
+      "rel": "related"
+    },
+    {
+      "href": "#sa-8",
+      "rel": "related"
+    },
+    {
+      "href": "#sa-17",
+      "rel": "related"
+    }
+  ],
+  "params": [
+    {
+      "guidelines": [
+        {
+          "prose": "duties of individuals requiring separation are defined;"
+        }
+      ],
+      "id": "ac-05_odp",
+      "label": "duties of individuals",
+      "props": [
+        {
+          "name": "alt-identifier",
+          "value": "ac-5_prm_1"
+        },
+        {
+          "class": "sp800-53",
+          "name": "alt-label",
+          "value": "duties of individuals requiring separation"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-05_ODP"
+        }
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "ac-5_smt",
+      "name": "statement",
+      "parts": [
+        {
+          "id": "ac-5_smt.a",
+          "name": "item",
+          "props": [
+            {
+              "name": "label",
+              "value": "a."
+            }
+          ],
+          "prose": "Identify and document {{ insert: param, ac-05_odp }} ; and"
+        },
+        {
+          "id": "ac-5_smt.b",
+          "name": "item",
+          "props": [
+            {
+              "name": "label",
+              "value": "b."
+            }
+          ],
+          "prose": "Define system access authorizations to support separation of duties."
+        }
+      ]
+    },
+    {
+      "id": "ac-5_gdn",
+      "name": "guidance",
+      "prose": "Separation of duties addresses the potential for abuse of authorized privileges and helps to reduce the risk of malevolent activity without collusion. Separation of duties includes dividing mission or business functions and support functions among different individuals or roles, conducting system support functions with different individuals, and ensuring that security personnel who administer access control functions do not also administer audit functions. Because separation of duty violations can span systems and application domains, organizations consider the entirety of systems and system components when developing policy on separation of duties. Separation of duties is enforced through the account management activities in [AC-2](#ac-2) , access control mechanisms in [AC-3](#ac-3) , and identity management activities in [IA-2](#ia-2), [IA-4](#ia-4) , and [IA-12](#ia-12)."
+    },
+    {
+      "id": "ac-5_obj",
+      "links": [
+        {
+          "href": "#ac-5_smt",
+          "rel": "assessment-for"
+        }
+      ],
+      "name": "assessment-objective",
+      "parts": [
+        {
+          "id": "ac-5_obj.a",
+          "links": [
+            {
+              "href": "#ac-5_smt.a",
+              "rel": "assessment-for"
+            }
+          ],
+          "name": "assessment-objective",
+          "props": [
+            {
+              "class": "sp800-53a",
+              "name": "label",
+              "value": "AC-05a."
+            }
+          ],
+          "prose": "{{ insert: param, ac-05_odp }} are identified and documented;"
+        },
+        {
+          "id": "ac-5_obj.b",
+          "links": [
+            {
+              "href": "#ac-5_smt.b",
+              "rel": "assessment-for"
+            }
+          ],
+          "name": "assessment-objective",
+          "props": [
+            {
+              "class": "sp800-53a",
+              "name": "label",
+              "value": "AC-05b."
+            }
+          ],
+          "prose": "system access authorizations to support separation of duties are defined."
+        }
+      ],
+      "props": [
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-05"
+        }
+      ]
+    },
+    {
+      "id": "ac-5_asm-examine",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Access control policy\n\nprocedures addressing divisions of responsibility and separation of duties\n\nsystem configuration settings and associated documentation\n\nlist of divisions of responsibility and separation of duties\n\nsystem access authorizations\n\nsystem audit records\n\nsystem security plan\n\nother relevant documents or records"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "EXAMINE"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-05-Examine"
+        }
+      ]
+    },
+    {
+      "id": "ac-5_asm-interview",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Organizational personnel with responsibilities for defining appropriate divisions of responsibility and separation of duties\n\norganizational personnel with information security responsibilities\n\nsystem/network administrators"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "INTERVIEW"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-05-Interview"
+        }
+      ]
+    },
+    {
+      "id": "ac-5_asm-test",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Mechanisms implementing separation of duties policy"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "TEST"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-05-Test"
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "class": "zero-padded",
+      "name": "label",
+      "value": "AC-05"
+    },
+    {
+      "name": "label",
+      "value": "AC-5"
+    },
+    {
+      "class": "sp800-53a",
+      "name": "label",
+      "value": "AC-05"
+    },
+    {
+      "name": "sort-id",
+      "value": "ac-05"
+    },
+    {
+      "name": "implementation-level",
+      "ns": "http://csrc.nist.gov/ns/rmf",
+      "value": "organization"
+    }
+  ],
+  "title": "Separation of Duties"
+}

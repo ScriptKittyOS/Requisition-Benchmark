@@ -1,0 +1,62 @@
+{
+  "rule_source": "NIST SP 800-53 r5.2.0",
+  "identifier": "NIST SP 800-53",
+  "title": "Electronic (OSCAL) Version of NIST SP 800-53 Rev 5.2.0 Controls and SP 800-53A Rev 5.2.0 Assessment Procedures",
+  "edition": "5.2.0",
+  "edition_last_modified": "2026-05-11T16:01:09.00000-00:00",
+  "oscal_version": "1.2.2",
+  "effective_window": {
+    "from": "2026-05-11",
+    "to": null,
+    "note": "from the catalog's own last-modified date; open until NIST supersedes 5.2.0 -- then the pack re-registers under the new edition (the spec's third open question)"
+  },
+  "obtained": {
+    "repository": "https://github.com/usnistgov/oscal-content",
+    "tag": "v1.5.0",
+    "commit": "78650f02ad9321bb7b817846f8fbd4f2bcd620de",
+    "path": "nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+    "url": "https://raw.githubusercontent.com/usnistgov/oscal-content/v1.5.0/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+    "sha256": "01f37cf90ea99d92242c936cbfbdebcc338eef1f71454e2acac36cc56e9bc062",
+    "bytes": 10442037,
+    "obtained_on": "2026-09-21",
+    "extracted_by": "docs/slices/requisition/REQ-155-pack-registration-shape/extract_source.py"
+  },
+  "controls": {
+    "AC-3": {
+      "file": "controls/ac-3.json",
+      "oscal_id": "ac-3",
+      "title": "Access Enforcement",
+      "sha256": "a25393a365304fb4433e06f9dfc52c686267aa32a99fb18a367144f3853349b0"
+    },
+    "AC-3(2)": {
+      "file": "controls/ac-3.2.json",
+      "oscal_id": "ac-3.2",
+      "title": "Dual Authorization",
+      "sha256": "b6230b36ab412bf23ea9d0310158481f4e6a6338142e8448fb195b55da47facd"
+    },
+    "AC-5": {
+      "file": "controls/ac-5.json",
+      "oscal_id": "ac-5",
+      "title": "Separation of Duties",
+      "sha256": "5d3ae58d37e277809439053a3210ba1b5a4d4fdbee5d589fa26839ac77beda93"
+    },
+    "IA-2": {
+      "file": "controls/ia-2.json",
+      "oscal_id": "ia-2",
+      "title": "Identification and Authentication (Organizational Users)",
+      "sha256": "96355e9835efc15424f0f173d5c27fc87e4eefa332116fd541739f63573c8b52"
+    },
+    "AU-8": {
+      "file": "controls/au-8.json",
+      "oscal_id": "au-8",
+      "title": "Time Stamps",
+      "sha256": "650ea66d4603c67241138288cb1a79d339fe662af6b34a376e64650326e610b5"
+    },
+    "AU-10": {
+      "file": "controls/au-10.json",
+      "oscal_id": "au-10",
+      "title": "Non-repudiation",
+      "sha256": "2d75b6998501390f0dac78f5ef77164b6e389f7ca1cbc6568af05ab6fc77b90c"
+    }
+  }
+}

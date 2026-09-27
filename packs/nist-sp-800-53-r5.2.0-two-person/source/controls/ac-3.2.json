@@ -1,0 +1,167 @@
+{
+  "class": "SP800-53-enhancement",
+  "id": "ac-3.2",
+  "links": [
+    {
+      "href": "#ac-3",
+      "rel": "required"
+    },
+    {
+      "href": "#cp-9",
+      "rel": "related"
+    },
+    {
+      "href": "#mp-6",
+      "rel": "related"
+    }
+  ],
+  "params": [
+    {
+      "guidelines": [
+        {
+          "prose": "privileged commands and/or other actions requiring dual authorization are defined;"
+        }
+      ],
+      "id": "ac-03.02_odp",
+      "label": "privileged commands and/or other actions",
+      "props": [
+        {
+          "name": "alt-identifier",
+          "value": "ac-3.2_prm_1"
+        },
+        {
+          "class": "sp800-53",
+          "name": "alt-label",
+          "value": "privileged commands and/or other organization-defined actions"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-03(02)_ODP"
+        }
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "ac-3.2_smt",
+      "name": "statement",
+      "prose": "Enforce dual authorization for {{ insert: param, ac-03.02_odp }}."
+    },
+    {
+      "id": "ac-3.2_gdn",
+      "name": "guidance",
+      "prose": "Dual authorization, also known as two-person control, reduces risk related to insider threats. Dual authorization mechanisms require the approval of two authorized individuals to execute. To reduce the risk of collusion, organizations consider rotating dual authorization duties. Organizations consider the risk associated with implementing dual authorization mechanisms when immediate responses are necessary to ensure public and environmental safety."
+    },
+    {
+      "id": "ac-3.2_obj",
+      "links": [
+        {
+          "href": "#ac-3.2_smt",
+          "rel": "assessment-for"
+        }
+      ],
+      "name": "assessment-objective",
+      "props": [
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-03(02)"
+        }
+      ],
+      "prose": "dual authorization is enforced for {{ insert: param, ac-03.02_odp }}."
+    },
+    {
+      "id": "ac-3.2_asm-examine",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Access control policy\n\nprocedures addressing access enforcement and dual authorization\n\nsystem design documentation\n\nsystem configuration settings and associated documentation\n\nlist of privileged commands requiring dual authorization\n\nlist of actions requiring dual authorization\n\nlist of approved authorizations (user privileges)\n\nsystem security plan\n\nother relevant documents or records"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "EXAMINE"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-03(02)-Examine"
+        }
+      ]
+    },
+    {
+      "id": "ac-3.2_asm-interview",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Organizational personnel with access enforcement responsibilities\n\nsystem/network administrators\n\norganizational personnel with information security responsibilities\n\nsystem developers"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "INTERVIEW"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-03(02)-Interview"
+        }
+      ]
+    },
+    {
+      "id": "ac-3.2_asm-test",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Dual authorization mechanisms implementing access control policy"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "TEST"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "AC-03(02)-Test"
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "class": "zero-padded",
+      "name": "label",
+      "value": "AC-03(02)"
+    },
+    {
+      "name": "label",
+      "value": "AC-3(2)"
+    },
+    {
+      "class": "sp800-53a",
+      "name": "label",
+      "value": "AC-03(02)"
+    },
+    {
+      "name": "sort-id",
+      "value": "ac-03.02"
+    },
+    {
+      "name": "implementation-level",
+      "ns": "http://csrc.nist.gov/ns/rmf",
+      "value": "system"
+    }
+  ],
+  "title": "Dual Authorization"
+}

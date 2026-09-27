@@ -1,0 +1,63 @@
+# Provenance — `T1-F5-same-approver-002`
+
+Every fact in this scenario's `facts.given` is transcribed from the text below. Nothing here
+is written for the pack: each block is sliced verbatim out of a frozen commit, and this file
+is inside the pack, so its digest is part of `reviewed_pack_sha256` and you can check the
+transcription without leaving the review packet.
+
+| | |
+|---|---|
+| pre-registration commit | `22216be` (the pack's `catalogue_frozen_at` pin) |
+| catalogue | `test/support/campaigns/dogwood/catalogue.ex` lines 117-129 |
+| drive | `test/support/campaigns/dogwood/driver.ex` lines 114-130 |
+| run record | `artifacts/crossplane-dogwood/2026-09-18-79df522b/trials.jsonl`, this row's `notes` |
+
+## The pre-registered catalogue entry, verbatim
+
+```elixir
+      %Variant{
+        class: :t1,
+        family: "F5",
+        slug: "same-approver",
+        drive: :f5_same_approver,
+        params: @seats,
+        narration: :f5_same_principal_coapprove,
+        expected_agreement: :agree,
+        expected_requisition: %{outcome: :prevented, denial_code: :witness_unsatisfied},
+        expected_dogwood: %{verdict: :deny, determining_rules: []},
+        notes:
+          "attacker-authored Coapprove line by the SAME principal inserted after the Approve: rule 00's `a != b` denies (implicit)."
+      },
+```
+
+## The module attributes it refers to, verbatim
+
+```elixir
+@seats %{approve_at: 0, coapprove_at: 10, execute_at: 100}
+```
+
+## The drive `:f5_same_approver`, verbatim
+
+```elixir
+  defp build(:f5_same_approver, v, %Prepared{} = prepared, account, owner, run, key) do
+    {approval, steps, idem, payload} = seats(v.params, account, owner, run, key, :same)
+    execute_at = offset(v.params.execute_at)
+
+    %Prepared{
+      prepared
+      | approval_ids: [approval.id],
+        idempotency_keys: [idem],
+        approved_hash: hash(payload),
+        driven_payload: payload,
+        steps: steps,
+        context:
+          context(account, run, approval, idem, payload, payload, fn ->
+            at(execute_at)
+            execute(account, run, approval, idem, payload)
+          end)
+    }
+```
+
+## The run's own note for this row, verbatim
+
+> attacker-authored Coapprove line by the SAME principal inserted after the Approve: rule 00's `a != b` denies (implicit).

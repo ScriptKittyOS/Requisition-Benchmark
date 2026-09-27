@@ -1,0 +1,109 @@
+{
+  "note": "The decision procedure: an ORDERED list of rules over the typed facts. The first rule whose `when` clause is satisfied decides the verdict and the code; if none is, the verdict is the default. This is what makes the pack an ORACLE rather than a list of assertions -- before it existed, `expected` and `refusal_code` were free author input and nothing checked them against the scenario's own facts. `bin/pack-check` now DERIVES every row's verdict from its facts and refuses the row if the derivation disagrees.",
+  "how_to_read": "Each rule names the pinned policy it enforces (source/parameters.json), the fact values that trigger it, the verdict it produces and the denial code (source/denial_codes.json). The ORDER is the evaluation order and is itself part of the pinned policy: a revoked approval is reported as revoked even though it is also unconsumed, and an expired approval is reported as expired even though it may also lack a second seat.",
+  "order_note": "Ordered most-specific defect first. Two orderings matter and are deliberate: expiry is evaluated BEFORE seat count, so T1-F5-coapprove-after-expiry-001 reports the expiry that PREVENTED the second seat rather than the missing seat it caused; and revocation is evaluated BEFORE consumption, so T1-F7-replay-after-revoke-001 reports the revocation rather than the replay.",
+  "rules": [
+    {
+      "policy": "policy.canonical_action_binding",
+      "when": {
+        "payload_binding": "diverged"
+      },
+      "verdict": "deny",
+      "code": "payload_hash_mismatch"
+    },
+    {
+      "policy": "policy.account_scope",
+      "when": {
+        "execution_scope": "different_account"
+      },
+      "verdict": "deny",
+      "code": "account_scope_mismatch"
+    },
+    {
+      "policy": "policy.revocation",
+      "when": {
+        "approval_status": "revoked"
+      },
+      "verdict": "deny",
+      "code": "approval_revoked"
+    },
+    {
+      "policy": "policy.approver_standing",
+      "when": {
+        "approver_standing": "withdrawn"
+      },
+      "verdict": "deny",
+      "code": "approver_authority_changed"
+    },
+    {
+      "policy": "policy.organizational_hold",
+      "when": {
+        "organizational_hold": "active"
+      },
+      "verdict": "deny",
+      "code": "authority_hold"
+    },
+    {
+      "policy": "policy.expiry_precedence",
+      "when": {
+        "approval_window": [
+          "expired_by_ttl",
+          "expired_by_explicit_expires_at",
+          "expired_at_deadline"
+        ]
+      },
+      "verdict": "deny",
+      "code": "approval_expired_at_execution"
+    },
+    {
+      "policy": "ac-05_odp",
+      "when": {
+        "proposer_separation": "proposer_approved"
+      },
+      "verdict": "deny",
+      "code": "witness_unsatisfied",
+      "note": "AC-05_ODP clause 1. No shipped row triggers it; it exists so the rule set is closed over the pinned policies rather than over the defects that happened to be interesting."
+    },
+    {
+      "policy": "ac-03.02_odp",
+      "when": {
+        "distinct_approvers": [
+          0,
+          1
+        ]
+      },
+      "verdict": "deny",
+      "code": "witness_unsatisfied"
+    },
+    {
+      "policy": "policy.one_execution",
+      "when": {
+        "idempotency_binding": "second_key_same_approval"
+      },
+      "verdict": "deny",
+      "code": "idempotency_key_mismatch"
+    },
+    {
+      "policy": "policy.one_execution",
+      "when": {
+        "authorization_consumed": "yes"
+      },
+      "verdict": "deny",
+      "code": "replayed"
+    },
+    {
+      "policy": "UNPINNED",
+      "when": {
+        "execution_burst": "four_in_ten_minutes"
+      },
+      "verdict": "unresolvable",
+      "code": null,
+      "note": "No pinned rule speaks to execution rate -- see source/parameters.json `unpinned_by_design`. The verdict is `unresolvable` BECAUSE the dimension feeds nothing, which is why `execution_burst` deliberately declares `feeds: []`."
+    }
+  ],
+  "default": {
+    "verdict": "allow",
+    "code": null,
+    "note": "Every pinned policy is satisfied. This is the sufficiency rule the first v2 review found missing: an `allow` is derivable only because the core dimensions are ALL stated and none of them triggers a rule. `trace_encoding` triggers nothing, which is precisely why the four harness rows are `allow` -- their defect is in the comparator's encoding, not in the authorization."
+  }
+}

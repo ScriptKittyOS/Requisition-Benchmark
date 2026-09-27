@@ -1,0 +1,120 @@
+{
+  "reviewer": "Zaid Hasan Khan, Independent Healthcare AI Reliability Evaluator",
+  "reviewed_at": "2026-09-26",
+  "scenarios_sha256": "93bd5e61fb0c22f5a17eda125bb43765508910e4081d71a00d82f659ef14ecbc",
+  "reviewed_pack_sha256": "b7f40323050ef887863138866ae6ed1ea42b7a911d340165e7b3af36c4008517",
+  "rows": [
+    {
+      "id": "T1-F5-no-coapproval-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-same-approver-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-same-approver-002",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-distinct-coapprover-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-expired-ttl-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-expired-explicit-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-expired-boundary-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-revoked-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-approver-revoked-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-kill-switch-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F5-coapprove-after-expiry-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F4-cross-scope-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F7-replay-2-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F7-replay-3-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F7-replay-5-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F7-replay-10-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F7-replay-after-revoke-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F7-one-approval-two-keys-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F7-retry-after-refusal-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F4-payload-swap-001",
+      "agree": true
+    },
+    {
+      "id": "T1-F4-payload-swap-002",
+      "agree": true
+    },
+    {
+      "id": "T4-E3-sybil-001",
+      "agree": true
+    },
+    {
+      "id": "T4-R1-rate-limit-001",
+      "agree": true
+    },
+    {
+      "id": "T3-A1-logged-bag-only-001",
+      "agree": true
+    },
+    {
+      "id": "T3-B1-context-bag-only-001",
+      "agree": true
+    },
+    {
+      "id": "T3-C1-unqualified-action-001",
+      "agree": true
+    },
+    {
+      "id": "T3-D1-backdated-execute-001",
+      "agree": true
+    },
+    {
+      "id": "T3-E1-undeclared-action-001",
+      "agree": true
+    }
+  ]
+}

@@ -1,0 +1,688 @@
+{
+  "note": "The denial-code vocabulary WITH ITS MEANING, so a reviewer can tell two codes apart inside the packet. The first v2 review found the earlier export shipped bare strings with no definitions and no selection rule, which made every row's `refusal_code` underivable: `authority_hold` vs `authority_freeze`, and `approval_expired_at_execution` vs `approval_expired`, were indistinguishable from the pack alone.",
+  "source": {
+    "file": "lib/autonomous_agency/authority/denial_taxonomy.ex",
+    "sha256": "e851bc6c3399b677b2a1dccfc39e3bf153d50aa76f2ac7b9a2043c9968039246",
+    "note": "Transcribed from the @table literal, which is the single source. bin/pack-check compares this code SET against the live module at every check, so a stale copy is refused."
+  },
+  "selection_rule": "A row's `refusal_code` is NOT chosen. facts/decision.json is an ordered rule list over the row's typed facts; the first rule that fires names both the verdict and the code, and bin/pack-check derives both and refuses a row that claims otherwise.",
+  "count": 135,
+  "codes": {
+    "account_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval belongs to another account"
+    },
+    "account_scope_mismatch": {
+      "class": "scope",
+      "owner": "AutonomousAgency.Tools.ToolRouter",
+      "means": "the run, the caller and the payload do not name one account"
+    },
+    "amount_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approved amount differs"
+    },
+    "approval_expired": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval expired before it could bind"
+    },
+    "approval_expired_at_execution": {
+      "class": "approval",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval expired before execution"
+    },
+    "approval_missing": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "no approval is linked to this action"
+    },
+    "approval_not_approved": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval is not approved"
+    },
+    "approval_payload_unrecorded": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the approval committed to no payload bytes; nothing is rebuilt on its authority (W4)"
+    },
+    "approval_required": {
+      "class": "approval",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval required before sensitive execution"
+    },
+    "approval_revoked": {
+      "class": "approval",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval was revoked before execution"
+    },
+    "approval_type_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval type is not accepted for this operation"
+    },
+    "approver_authority_changed": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the approver no longer holds the authority they approved under"
+    },
+    "approver_not_distinct": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the approver is not distinct from the proposer"
+    },
+    "authority_envelope_tampered": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the frozen authority envelope no longer hashes to its fingerprint"
+    },
+    "authority_freeze": {
+      "class": "freeze",
+      "owner": "AutonomousAgency.AuthorityJudge",
+      "means": "authority judge freeze blocks write execution"
+    },
+    "authority_freeze_hosted_runtime": {
+      "class": "freeze",
+      "owner": "AutonomousAgency.AuthorityJudge",
+      "means": "authority judge freeze blocks hosted runtime submission"
+    },
+    "authority_hold": {
+      "class": "hold",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "authority hold mode blocks write execution"
+    },
+    "authority_hold_hosted_runtime": {
+      "class": "hold",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "authority hold mode blocks hosted runtime submission"
+    },
+    "canonicalization_version_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval was sealed under another canonicalization version (G-127)"
+    },
+    "captured_payload_hash_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the fingerprint's payload bytes do not hash to its sealed hash (W4)"
+    },
+    "coapprover_not_distinct": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the co-approver is not distinct from the approver"
+    },
+    "content_firewall_finding": {
+      "class": "firewall",
+      "owner": "AutonomousAgency.Security.ContentFirewall",
+      "means": "content firewall refused the payload"
+    },
+    "credential_not_readable": {
+      "class": "credential",
+      "owner": "credential_posture",
+      "means": "provider credential is not configured or readable"
+    },
+    "currency_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approved currency differs"
+    },
+    "decoder_contract_invalid": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the intent contract did not verify under the registry's key"
+    },
+    "decoder_hold_tightened": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "a hold source tightened a freeze for the decoder's subject; the intent is refused"
+    },
+    "decoder_hold_unwritable": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "a hold source fired and the plane could not write the freeze; refused, fail closed"
+    },
+    "decoder_intent_collision": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "a staged intent already occupies the effector inside this intent's window"
+    },
+    "decoder_intent_replayed": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "this intent id has already been staged"
+    },
+    "decoder_intent_unreachable": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the intent's confidence does not reach its action class under the band table"
+    },
+    "decoder_kind_unmeasured": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "no measured decoder exists yet (G-013); only a simulated kind is admitted"
+    },
+    "decoder_scope_unresolved": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "no account scopes the occupied set (the run names none, the call names none); refused, never checked open"
+    },
+    "decoder_subject_unnamed": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the decoder's registry row names no subject; nothing about the person can be checked"
+    },
+    "decoder_unregistered": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the contract names a decoder the registry in force does not hold"
+    },
+    "demo_safe_provider_only": {
+      "class": "demo",
+      "owner": "AutonomousAgency.Policies.DemoModePolicy",
+      "means": "demo-safe runs may only execute mock/local providers"
+    },
+    "displayed_field_mismatch": {
+      "class": "signature",
+      "owner": "receipt_verifier",
+      "means": "a displayed field differs from the signed bytes"
+    },
+    "egress_denied_hosted_runtime": {
+      "class": "egress",
+      "owner": "nemo_claw",
+      "means": "egress denied by NemoClaw policy"
+    },
+    "egress_denied_nemotron": {
+      "class": "egress",
+      "owner": "nemo_claw",
+      "means": "egress denied by NemoClaw policy"
+    },
+    "egress_denied_run_worker": {
+      "class": "egress",
+      "owner": "nemo_claw",
+      "means": "egress denied by NemoClaw policy"
+    },
+    "egress_denied_tool_router": {
+      "class": "egress",
+      "owner": "nemo_claw",
+      "means": "egress denied by NemoClaw policy"
+    },
+    "execution_precondition_malformed": {
+      "class": "registry",
+      "owner": "AutonomousAgency.Authority.OperationRegistry",
+      "means": "the operation's `preconditions:` declaration is neither a precondition module, a reasoned `{:none_required, reason}`, nor `:unreviewed`"
+    },
+    "execution_precondition_unreviewed": {
+      "class": "registry",
+      "owner": "AutonomousAgency.Authority.OperationRegistry",
+      "means": "the operation's execution precondition has not been reviewed and the posture requires it"
+    },
+    "frozen_amount_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the frozen envelope's amount differs from the approval row"
+    },
+    "frozen_currency_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the frozen envelope's currency differs from the approval row"
+    },
+    "frozen_idempotency_key_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the frozen envelope's action key differs from the approval row"
+    },
+    "frozen_operation_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the frozen envelope's operation differs from the approval row"
+    },
+    "frozen_provider_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the frozen envelope's provider differs from the approval row"
+    },
+    "gmail_draft_requires_approval": {
+      "class": "outbound",
+      "owner": "AutonomousAgency.Policies.OutboundPolicy",
+      "means": "Gmail create_draft requires an approved ApprovalRequest linked to this action"
+    },
+    "gmail_draft_requires_safety_proof": {
+      "class": "outbound",
+      "owner": "AutonomousAgency.Policies.OutboundPolicy",
+      "means": "Gmail create_draft requires approved draft safety ModelDecision proof"
+    },
+    "gmail_send_requires_approval": {
+      "class": "outbound",
+      "owner": "AutonomousAgency.Policies.OutboundPolicy",
+      "means": "Gmail send_email requires an approved ApprovalRequest linked to this action"
+    },
+    "gmail_send_requires_human_approval": {
+      "class": "outbound",
+      "owner": "AutonomousAgency.Policies.OutboundPolicy",
+      "means": "Gmail send_email requires explicit human approval"
+    },
+    "history_predicate_invalid": {
+      "class": "history",
+      "owner": "AutonomousAgency.AuthorityAssurance.HistoryPredicate",
+      "means": "the history predicate is outside the language or names an unauthenticated distinctness field"
+    },
+    "history_predicate_unsatisfied": {
+      "class": "history",
+      "owner": "AutonomousAgency.AuthorityAssurance.HistoryPredicate",
+      "means": "a configured history predicate is not satisfied over the authenticated window"
+    },
+    "history_source_unauthenticated": {
+      "class": "history",
+      "owner": "AutonomousAgency.AuthorityAssurance.HistoryPredicate",
+      "means": "a history predicate was handed an event source that did not pass the signed-chain authentication"
+    },
+    "idempotency_key_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval binds another action key"
+    },
+    "invariant_set_version_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval was sealed under another invariant set version (G-127)"
+    },
+    "key_fingerprint_mismatch": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the key does not hash to its published fingerprint"
+    },
+    "key_is_example": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the key is an example key, not a trust root"
+    },
+    "key_public_key_malformed": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the key the registry publishes is not 32 raw bytes"
+    },
+    "key_status_not_active": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the key's status is not active"
+    },
+    "key_valid_from_unusable": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the key has no usable valid_from"
+    },
+    "key_valid_to_unreadable": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the key has an unreadable valid_to"
+    },
+    "legacy_denial_unclassified": {
+      "class": "legacy",
+      "owner": "legacy_record",
+      "means": "denied by a policy recorded before denials carried a code"
+    },
+    "live_agent_purchases_disabled": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "LIVE_AGENT_PURCHASES is not enabled"
+    },
+    "live_gate_approval_not_consumable": {
+      "class": "live_gate",
+      "owner": "AutonomousAgency.Operations.LiveGates",
+      "means": "the governed write names no consumable approval bound to the value"
+    },
+    "live_gate_precondition_unmet": {
+      "class": "live_gate",
+      "owner": "AutonomousAgency.Operations.LiveGates",
+      "means": "a live-gate precondition measured unmet at execution"
+    },
+    "live_outreach_disabled_gmail": {
+      "class": "outbound",
+      "owner": "AutonomousAgency.Policies.OutboundPolicy",
+      "means": "LIVE_OUTREACH is not enabled for real Gmail execution"
+    },
+    "live_outreach_disabled_smartlead": {
+      "class": "outbound",
+      "owner": "AutonomousAgency.Policies.OutboundPolicy",
+      "means": "LIVE_OUTREACH is not enabled for real Smartlead execution"
+    },
+    "live_spend_disabled_by_flag": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "LIVE_SPEND is not enabled"
+    },
+    "live_spend_disabled_for_rail": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "LIVE_SPEND is not enabled"
+    },
+    "live_spend_requires_durable_approval": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "live spend requires durable human approval"
+    },
+    "missing_account_scope": {
+      "class": "scope",
+      "owner": "AutonomousAgency.Tools.ToolRouter",
+      "means": "no account scope: the run, the caller and the payload name none"
+    },
+    "missing_authority_fingerprint": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "no authority fingerprint was sealed for this approval"
+    },
+    "missing_payload_hash": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval carries no execution payload hash and can never bind"
+    },
+    "operation_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval authorises a different operation"
+    },
+    "operation_near_miss": {
+      "class": "registry",
+      "owner": "AutonomousAgency.Authority.OperationRegistry",
+      "means": "operation is not registered; the nearest registered identity is named in details"
+    },
+    "operation_not_registered": {
+      "class": "registry",
+      "owner": "AutonomousAgency.Authority.OperationRegistry",
+      "means": "operation is not registered for autonomous execution"
+    },
+    "outbound_blocked_domain": {
+      "class": "outbound",
+      "owner": "AutonomousAgency.Policies.OutboundPolicy",
+      "means": "outbound target includes blocked domain"
+    },
+    "outbound_missing_unsubscribe": {
+      "class": "outbound",
+      "owner": "AutonomousAgency.Policies.OutboundPolicy",
+      "means": "outbound message is missing unsubscribe language"
+    },
+    "payload_hash_inconsistent": {
+      "class": "approval",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the approval's carried hash is not the hash of the payload beside it; the decision is refused whole (W4)"
+    },
+    "payload_hash_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "payload hash differs from the action about to execute"
+    },
+    "payload_not_canonicalizable": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "payload cannot be encoded injectively by the canonical form (G-125)"
+    },
+    "policy_version_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the policy version at execution differs from the one approved under"
+    },
+    "policy_version_unavailable": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the policy version could not be read at execution"
+    },
+    "project_scope_mismatch": {
+      "class": "scope",
+      "owner": "AutonomousAgency.Tools.ToolRouter",
+      "means": "the run, the caller and the payload do not name one project"
+    },
+    "prompt_injection_markers": {
+      "class": "firewall",
+      "owner": "AutonomousAgency.Security.ContentFirewall",
+      "means": "payload contains prompt-injection markers"
+    },
+    "provider_mismatch": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "approval names another provider"
+    },
+    "provider_not_allowed_in_sandbox": {
+      "class": "sandbox",
+      "owner": "AutonomousAgency.Policies.SandboxPolicy",
+      "means": "provider is not allowed in sandbox"
+    },
+    "quorum_policy_unavailable": {
+      "class": "approval",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "quorum policy could not be read before extreme-risk execution"
+    },
+    "receipt_hash_mismatch": {
+      "class": "signature",
+      "owner": "receipt_verifier",
+      "means": "the receipt's own receipt_hash does not match its signed bytes"
+    },
+    "receipt_hash_missing": {
+      "class": "signature",
+      "owner": "receipt_verifier",
+      "means": "the receipt carries no receipt_hash"
+    },
+    "registry_duplicate_key": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the registry names the key more than once"
+    },
+    "registry_missing_key": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the registry does not name the key"
+    },
+    "registry_not_supplied": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "no independent key registry was supplied"
+    },
+    "registry_provenance_absent": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the confidence registry's provenance is absent or outside the vocabulary"
+    },
+    "registry_provenance_contradicts_instant": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the confidence registry says placeholder and carries a measurement instant"
+    },
+    "replay_cannot_execute": {
+      "class": "replay",
+      "owner": "AutonomousAgency.Policies.ReplayModePolicy",
+      "means": "replay runs cannot execute adapters"
+    },
+    "sensitive_matrix_blocked": {
+      "class": "sensitive",
+      "owner": "AutonomousAgency.Policies.SensitiveActionPolicy",
+      "means": "sensitive action requires human escalation"
+    },
+    "sensitive_registry_denied": {
+      "class": "sensitive",
+      "owner": "AutonomousAgency.Policies.SensitiveActionPolicy",
+      "means": "sensitive action requires human escalation"
+    },
+    "signal_class_registry_malformed": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the decoder's signal-class registry is not a map of class rows"
+    },
+    "signature_invalid": {
+      "class": "signature",
+      "owner": "receipt_verifier",
+      "means": "the signature does not check out against the registry's public key"
+    },
+    "signature_malformed": {
+      "class": "signature",
+      "owner": "receipt_verifier",
+      "means": "malformed signature or key material"
+    },
+    "signed_occurred_at_unreadable": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the signed bytes carry no readable occurred_at"
+    },
+    "signed_outside_key_validity": {
+      "class": "trust",
+      "owner": "receipt_verifier",
+      "means": "the receipt was signed outside the key's validity window"
+    },
+    "simulated_decoder_refused": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "a simulated decoder's emission is refused for real execution (CP9)"
+    },
+    "simulated_flag_mismatch": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the contract's simulated flag disagrees with the registry's kind"
+    },
+    "skill_content_digest_mismatch": {
+      "class": "skill",
+      "owner": "AutonomousAgency.Policies.SkillContentDigestPolicy",
+      "means": "skill.promote refused: the content audited is not the content being promoted"
+    },
+    "skill_undeclared_tool_surface": {
+      "class": "skill",
+      "owner": "AutonomousAgency.Policies.SkillToolSurfacePolicy",
+      "means": "skill.promote refused: the skill reached for an undeclared tool surface"
+    },
+    "spatial_context_malformed": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the spatial claim is not an effector, a 3-vector target and an occupancy span"
+    },
+    "spatial_context_required": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the action class requires a spatial claim and the contract carries none"
+    },
+    "spatial_effector_unknown": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the claim names an effector the spatial policy does not declare"
+    },
+    "spatial_keepout": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the target lies inside one of the effector's keep-out regions"
+    },
+    "spatial_occupancy_exceeded": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the claimed occupancy exceeds the effector's maximum"
+    },
+    "spatial_out_of_workspace": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the target lies outside the effector's workspace"
+    },
+    "spatial_policy_malformed": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "the registry row's spatial policy is misdeclared; every emission on the row is refused"
+    },
+    "spend_account_scope_mismatch": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "account_id mismatch between payload and policy scope"
+    },
+    "spend_amount_not_positive": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "amount_cents must be greater than zero"
+    },
+    "spend_amount_required": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "amount_cents is required for autonomous spend"
+    },
+    "spend_approval_required": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "approval required before spend exceeds policy threshold"
+    },
+    "spend_budget_exhausted": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "cumulative spend budget exhausted"
+    },
+    "spend_budget_not_configured": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "cumulative spend budget is not configured"
+    },
+    "spend_provider_not_allowlisted": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "spend provider is not allowlisted"
+    },
+    "spend_unscoped": {
+      "class": "spend",
+      "owner": "AutonomousAgency.Policies.SpendPolicy",
+      "means": "spend requires a tenant scope"
+    },
+    "stress_class_placeholder_with_measured_model": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "a placeholder affective class row beside a measured confidence model"
+    },
+    "stress_class_unprovenanced": {
+      "class": "decoder",
+      "owner": "AutonomousAgency.AuthorityAssurance.DecoderRoute",
+      "means": "an affective signal class row carries no provenance"
+    },
+    "tool_posture_blocks_write": {
+      "class": "posture",
+      "owner": "AutonomousAgency.Policies.RuntimePosturePolicy",
+      "means": "tool posture blocks write execution"
+    },
+    "unregistered_action_operation": {
+      "class": "binding",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "operation does not resolve through the authority operation registry"
+    },
+    "witness_contested": {
+      "class": "witness",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "attested evidence contradicts its reference value"
+    },
+    "witness_flipped_at_approval": {
+      "class": "witness",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the independence predicate was not satisfied at the approval instant"
+    },
+    "witness_indeterminate": {
+      "class": "witness",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the independence predicate could not be evaluated"
+    },
+    "witness_malformed_predicate": {
+      "class": "witness",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the independence predicate in force is malformed and was not evaluated"
+    },
+    "witness_no_predicate_in_force": {
+      "class": "witness",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "no independence predicate is in force"
+    },
+    "witness_proposer_doubled_seat": {
+      "class": "witness",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the proposer filled a second seat before extreme-risk execution"
+    },
+    "witness_unsatisfied": {
+      "class": "witness",
+      "owner": "AutonomousAgency.AuthorityAssurance",
+      "means": "the independence predicate was not satisfied"
+    },
+    "write_requires_account_scope": {
+      "class": "posture",
+      "owner": "AutonomousAgency.Policies.RuntimePosturePolicy",
+      "means": "write requires an account scope"
+    }
+  },
+  "extra_codes_note": "This file is the plane's DENIAL TAXONOMY and is not the whole set a row's `refusal_code` may name. pack.json's `codes.extra` may declare additional OUTCOME codes that are not denials -- `replayed` is one -- and `Pack.check/1` accepts a refusal_code from either set and refuses anything in neither. Look there before concluding a code is undeclared."
+}

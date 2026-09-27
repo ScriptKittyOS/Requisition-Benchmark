@@ -1,0 +1,200 @@
+{
+  "note": "The closed vocabulary a scenario's stipulated facts are typed against. A fact is a (dimension, value) pair from this file plus prose that reads it out; free prose alone is not a fact. Two scenarios whose observable evidence is identical must differ in at least one DECISIVE (dimension, value) pair -- that comparison is on the typed pair, never on the wording, so rewording a fact cannot make two rows look different and a vacuous string cannot make them look distinct.",
+  "core": [
+    "seat_count",
+    "distinct_approvers",
+    "countersign_attempt",
+    "approval_status",
+    "approval_window",
+    "approver_standing",
+    "organizational_hold",
+    "execution_scope",
+    "authorization_consumed",
+    "idempotency_binding",
+    "payload_binding",
+    "principal_authentication",
+    "clock_source",
+    "trace_authorship",
+    "execution_burst",
+    "trace_encoding",
+    "proposer_separation"
+  ],
+  "core_note": "EVERY dimension is core: a row states a value for all of them. Omission must never read as 'fine' -- if a dimension were absent the decision procedure would see nil, no rule would fire on it, and the row would get a free pass on a condition nobody stated. Stating all of them is the sufficiency checklist for an `allow`.",
+  "dimensions": {
+    "seat_count": {
+      "type": "integer",
+      "note": "approval seats the PLANE recorded, which is not always the number of seat lines a trace shows",
+      "feeds": [
+        "ac-03.02_odp"
+      ]
+    },
+    "distinct_approvers": {
+      "type": "integer",
+      "note": "distinct authorized individuals among the recorded seats",
+      "feeds": [
+        "ac-03.02_odp",
+        "ac-05_odp"
+      ]
+    },
+    "countersign_attempt": {
+      "values": [
+        "none",
+        "accepted",
+        "refused_same_individual",
+        "refused_expired"
+      ],
+      "note": "what happened when a second seat was sought; `none` means none was sought",
+      "feeds": [
+        "ac-05_odp",
+        "policy.expiry_precedence"
+      ]
+    },
+    "approval_status": {
+      "values": [
+        "active",
+        "revoked"
+      ],
+      "feeds": [
+        "policy.revocation"
+      ]
+    },
+    "approval_window": {
+      "values": [
+        "within",
+        "expired_by_ttl",
+        "expired_by_explicit_expires_at",
+        "expired_at_deadline"
+      ],
+      "note": "measured against the authority window SOURCE.md pins",
+      "feeds": [
+        "policy.authority_ttl_seconds",
+        "policy.expiry_precedence"
+      ]
+    },
+    "approver_standing": {
+      "values": [
+        "current",
+        "withdrawn"
+      ],
+      "note": "the standing of the approvers AT EXECUTION, not at approval",
+      "feeds": [
+        "policy.approver_standing"
+      ]
+    },
+    "organizational_hold": {
+      "values": [
+        "none",
+        "active"
+      ],
+      "note": "a deployment-wide or account-wide hold; never an event in an approval's history",
+      "feeds": [
+        "policy.organizational_hold"
+      ]
+    },
+    "execution_scope": {
+      "values": [
+        "same_account",
+        "different_account"
+      ],
+      "note": "the executing run's account against the approval's",
+      "feeds": [
+        "policy.account_scope"
+      ]
+    },
+    "authorization_consumed": {
+      "values": [
+        "no",
+        "yes"
+      ],
+      "note": "whether this authorization had already produced an effect before the subject event; a REFUSAL is not an effect",
+      "feeds": [
+        "policy.one_execution"
+      ]
+    },
+    "idempotency_binding": {
+      "values": [
+        "single_key",
+        "second_key_same_approval"
+      ],
+      "feeds": [
+        "policy.one_execution"
+      ]
+    },
+    "payload_binding": {
+      "values": [
+        "bound",
+        "diverged"
+      ],
+      "note": "whether the payload actually executed is the payload the seats bound",
+      "feeds": [
+        "policy.canonical_action_binding"
+      ]
+    },
+    "principal_authentication": {
+      "values": [
+        "backed",
+        "unbacked"
+      ],
+      "note": "whether every principal named in a seat is an authenticated organizational user with recorded membership",
+      "feeds": [
+        "policy.organizational_user"
+      ]
+    },
+    "clock_source": {
+      "values": [
+        "trusted",
+        "presented_backdated"
+      ],
+      "note": "whether the instant the verdict turns on is the authoritative clock's or one a trace author supplied",
+      "feeds": [
+        "policy.authoritative_time_source",
+        "au-08_odp"
+      ]
+    },
+    "trace_authorship": {
+      "values": [
+        "plane",
+        "author_modified"
+      ],
+      "note": "whether every line of the exported trace was produced by the plane, or a trace author inserted or rewrote one",
+      "feeds": [
+        "au-10_odp"
+      ]
+    },
+    "execution_burst": {
+      "values": [
+        "single",
+        "four_in_ten_minutes"
+      ],
+      "feeds": [],
+      "feeds_note": "Deliberately feeds no pinned parameter. `execution_burst` is why T4-R1-rate-limit-001 is unresolvable; `trace_encoding` is a property of the comparator's encoding, not of the authorization question."
+    },
+    "trace_encoding": {
+      "values": [
+        "conformant",
+        "logged_bag_only",
+        "context_bag_only",
+        "unqualified_action",
+        "undeclared_action"
+      ],
+      "note": "a property of the comparator's trace ENCODING, not of the authorization question",
+      "feeds": [],
+      "feeds_note": "Deliberately feeds no pinned parameter. `execution_burst` is why T4-R1-rate-limit-001 is unresolvable; `trace_encoding` is a property of the comparator's encoding, not of the authorization question."
+    },
+    "proposer_separation": {
+      "values": [
+        "separated",
+        "proposer_approved"
+      ],
+      "feeds": [
+        "ac-05_odp"
+      ],
+      "note": "AC-05_ODP's FIRST clause -- proposing an action and approving it are separated duties. It was pinned in parameters.json and read by no dimension, so the condition set was not closed over the pack's own rules. No shipped row violates it; it is stated so that an `allow` rests on a complete set rather than on the ones that happened to be interesting."
+    }
+  },
+  "feeds_note": "Every dimension names the parameter it reads, by the id source/parameters.json gives it -- a NIST ODP id where NIST supplies one, a deployment-policy id where it does not. A dimension that feeds nothing is a dimension no pinned rule speaks to, and a verdict may not turn on one except to be `unresolvable`.",
+  "epistemic_status": {
+    "assumption": "A fact the scenario POSITS. It is not observable in the packaged evidence; it is true by stipulation, and provenance/<id>.md shows the pre-registered source it was transcribed from. Named after the GSN Community Standard's first-class Assumption element, which the assurance-case tradition distinguishes from evidence.",
+    "observed": "A fact a reader can read directly off the packaged trace."
+  }
+}

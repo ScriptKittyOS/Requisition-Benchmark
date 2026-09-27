@@ -1,0 +1,9 @@
+{
+  "note": "the witness roster the predicates are checked against at registration (PredicateAnalysis.control_reachable/3): the shape of v0.2.0's two-person operations -- two human approvers and the proposing agent; identities are roles, the run's UUIDs are in each trace",
+  "context": {"proposer_candidates": ["agent", "approver-a", "approver-b"]},
+  "witnesses": [
+    {"witness_id": "approver-a", "identity": "approver-a", "kind": "human", "attributes": {}},
+    {"witness_id": "approver-b", "identity": "approver-b", "kind": "human", "attributes": {}},
+    {"witness_id": "agent", "identity": "agent", "kind": "machine", "attributes": {}}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "provenance": {
+    "module": "AutonomousAgency.AuthorityAssurance.PredicateRegistry",
+    "function": "defaults/0",
+    "note": "the shipped default for the class, as the deployment ran it in v0.2.0; the checker reports (never refuses) when the declared predicate differs from the tree's default"
+  },
+  "form": "RequisitionBench.Pack.Predicate typed JSON: {op, ...}; an atom value is {\"atom\": name}, a string is a JSON string",
+  "predicates": {
+    "extreme_risk": {
+      "op": "count_distinct",
+      "attribute": "identity",
+      "filter": {"op": "attr", "key": "kind", "cmp": "!=", "value": {"atom": "machine"}},
+      "min": 2
+    }
+  },
+  "inexpressible": {
+    "reason": "the binding (fingerprint), the window (TTL, explicit expiry, the closed boundary), revocation, the approver's standing at execution, the hold, the scope and replay are the interpreter's and the router's own checks (`AuthorityAssurance.preflight/4`, `Approvals.decision_expired?/2`, `RuntimePosturePolicy`), not clauses over the witness set -- 17 of the 28 rows",
+    "finding": "a finding about the predicate language, stated as the specification requires; a plane whose language expresses more is a better plane by a measurable count"
+  }
+}

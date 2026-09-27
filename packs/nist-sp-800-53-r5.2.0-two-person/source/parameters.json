@@ -1,0 +1,82 @@
+{
+  "note": "Every value this pack had to choose, in two kinds, because NIST supplies an id namespace for one kind and none for the other. Conflating them would invent a namespace where NIST already has one, and would dress deployment policy up as NIST text.",
+  "kinds": {
+    "odp": "A genuine NIST organization-defined parameter. The id and the sp800_53a_label are the catalog's own, read from the shipped control file at source/controls/. Value chosen by this deployment.",
+    "deployment_policy": "NOT a NIST parameter. AC-3 enforces 'approved authorizations ... in accordance with applicable access control policies' but does not define those policies, and IA-2 does not define who an organizational user is. These are this deployment's rules, which AC-3 and IA-2 then enforce. They are pinned here because a verdict that turns on one is otherwise underivable."
+  },
+  "odp": {
+    "ac-03.02_odp": {
+      "sp800_53a_label": "AC-03(02)_ODP",
+      "nist_label": "privileged commands and/or other actions",
+      "nist_guideline": "privileged commands and/or other actions requiring dual authorization are defined;",
+      "value": "every action in the `extreme_risk` predicate class (predicates/index.json): two distinct non-machine identities"
+    },
+    "ac-05_odp": {
+      "sp800_53a_label": "AC-05_ODP",
+      "nist_label": "duties of individuals",
+      "nist_guideline": "duties of individuals requiring separation are defined;",
+      "value": "proposing an action and approving it; approving and co-approving the same action"
+    },
+    "au-10_odp": {
+      "sp800_53a_label": "AU-10_ODP",
+      "nist_label": "actions",
+      "nist_guideline": "actions to be covered by non-repudiation are defined;",
+      "value": "approving, co-approving, revoking, executing"
+    },
+    "au-08_odp": {
+      "sp800_53a_label": "AU-08_ODP",
+      "nist_label": "granularity of time measurement",
+      "nist_guideline": "granularity of time measurement for audit record timestamps is defined;",
+      "value": "one second, UTC"
+    }
+  },
+  "deployment_policy": {
+    "policy.canonical_action_binding": {
+      "basis": "AC-3 'applicable access control policies'",
+      "value": "An approval binds exactly one canonical action, identified by its payload fingerprint. Executing a different payload is not the approved authorization, whatever a trace asserts."
+    },
+    "policy.authority_ttl_seconds": {
+      "basis": "AC-3 'applicable access control policies'",
+      "value": 86400,
+      "note": "24 hours, measured from the approval's decision, for an approval recording no explicit expires_at"
+    },
+    "policy.expiry_precedence": {
+      "basis": "AC-3 'applicable access control policies'",
+      "value": "Where both an authority TTL and an explicit expires_at exist, the EARLIER governs. The window is CLOSED at the deadline (expires_at <= now)."
+    },
+    "policy.revocation": {
+      "basis": "AC-3 'applicable access control policies'",
+      "value": "A revoked approval binds nothing from the moment of revocation."
+    },
+    "policy.approver_standing": {
+      "basis": "AC-3 'applicable access control policies'",
+      "value": "An approver whose authorization changed after approving is not an authorized individual at execution. Standing is evaluated AT EXECUTION, not at approval."
+    },
+    "policy.organizational_hold": {
+      "basis": "AC-3 'applicable access control policies'",
+      "value": "An active organizational or deployment-wide hold suspends execution. A hold is a state of the deployment and is never an event in an approval's history."
+    },
+    "policy.one_execution": {
+      "basis": "AC-3 'applicable access control policies'",
+      "value": "An approval is consumed by ONE execution. A replay is not a second authorized execution, and a second idempotency key does not create a second authorization. A REFUSAL IS NOT AN EXECUTION: a refused attempt produces no effect and consumes nothing.",
+      "note": "The last sentence is pinned because T1-F7-retry-after-refusal-001's allow turns on it and the first review could not derive it."
+    },
+    "policy.account_scope": {
+      "basis": "AC-3 'applicable access control policies'",
+      "value": "An approval binds only within the account it was decided in. An execution requested by a run belonging to a different account is outside the approved authorization, even when it presents that approval's identifier, idempotency key and payload."
+    },
+    "policy.authoritative_time_source": {
+      "basis": "AU-8(a), 'internal system clocks'",
+      "value": "The plane's own system clock. An instant appearing in an exported trace is a PRESENTED value; where a presented instant and the system clock differ, the system clock governs."
+    },
+    "policy.organizational_user": {
+      "basis": "IA-2",
+      "value": "A principal with a recorded, current account membership. A principal name appearing in a trace with no membership behind it is not an organizational user and its apparent act is not a seat."
+    }
+  },
+  "unpinned_by_design": {
+    "execution_rate": {
+      "note": "No per-principal execution burst limit is pinned, and none is derivable from AC-3, AC-3(2), AC-5, AU-8, AU-10 or IA-2: AC-7 concerns unsuccessful logon attempts and SC-5 denial of service. T4-R1-rate-limit-001 is `unresolvable` for exactly this reason, and its decisive dimension `execution_burst` deliberately feeds nothing."
+    }
+  }
+}

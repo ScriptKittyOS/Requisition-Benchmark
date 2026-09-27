@@ -1,0 +1,310 @@
+{
+  "class": "SP800-53",
+  "id": "ia-2",
+  "links": [
+    {
+      "href": "#678e3d6c-150b-4393-aec5-6e3481eb1e00",
+      "rel": "reference"
+    },
+    {
+      "href": "#7ba1d91c-3934-4d5a-8532-b32f864ad34c",
+      "rel": "reference"
+    },
+    {
+      "href": "#a295ca19-8c75-4b4c-8800-98024732e181",
+      "rel": "reference"
+    },
+    {
+      "href": "#737513fa-6758-403f-831d-5ddab5e23cb3",
+      "rel": "reference"
+    },
+    {
+      "href": "#858705be-3c1f-48aa-a328-0ce398d95ef0",
+      "rel": "reference"
+    },
+    {
+      "href": "#7af2e6ec-9f7e-4232-ad3f-09888eb0793a",
+      "rel": "reference"
+    },
+    {
+      "href": "#828856bd-d7c4-427b-8b51-815517ec382d",
+      "rel": "reference"
+    },
+    {
+      "href": "#10963761-58fc-4b20-b3d6-b44a54daba03",
+      "rel": "reference"
+    },
+    {
+      "href": "#d9e036ba-6eec-46a6-9340-b0bf1fea23b4",
+      "rel": "reference"
+    },
+    {
+      "href": "#e8552d48-cf41-40aa-8b06-f45f7fb4706c",
+      "rel": "reference"
+    },
+    {
+      "href": "#15dc76ff-b17a-4eeb-8948-8ea8de3ccc2c",
+      "rel": "reference"
+    },
+    {
+      "href": "#4b38e961-1125-4a5b-aa35-1d6c02846dad",
+      "rel": "reference"
+    },
+    {
+      "href": "#91701292-8bcd-4d2e-a5bd-59ab61e34b3c",
+      "rel": "reference"
+    },
+    {
+      "href": "#4f5f51ac-2b8d-4b90-a3c7-46f56e967617",
+      "rel": "reference"
+    },
+    {
+      "href": "#604774da-9e1d-48eb-9c62-4e959dc80737",
+      "rel": "reference"
+    },
+    {
+      "href": "#7f473f21-fdbf-4a6c-81a1-0ab95919609d",
+      "rel": "reference"
+    },
+    {
+      "href": "#3915a084-b87b-4f02-83d4-c369e746292f",
+      "rel": "reference"
+    },
+    {
+      "href": "#ac-2",
+      "rel": "related"
+    },
+    {
+      "href": "#ac-3",
+      "rel": "related"
+    },
+    {
+      "href": "#ac-4",
+      "rel": "related"
+    },
+    {
+      "href": "#ac-14",
+      "rel": "related"
+    },
+    {
+      "href": "#ac-17",
+      "rel": "related"
+    },
+    {
+      "href": "#ac-18",
+      "rel": "related"
+    },
+    {
+      "href": "#au-1",
+      "rel": "related"
+    },
+    {
+      "href": "#au-6",
+      "rel": "related"
+    },
+    {
+      "href": "#ia-4",
+      "rel": "related"
+    },
+    {
+      "href": "#ia-5",
+      "rel": "related"
+    },
+    {
+      "href": "#ia-8",
+      "rel": "related"
+    },
+    {
+      "href": "#ia-13",
+      "rel": "related"
+    },
+    {
+      "href": "#ma-4",
+      "rel": "related"
+    },
+    {
+      "href": "#ma-5",
+      "rel": "related"
+    },
+    {
+      "href": "#pe-2",
+      "rel": "related"
+    },
+    {
+      "href": "#pl-4",
+      "rel": "related"
+    },
+    {
+      "href": "#sa-4",
+      "rel": "related"
+    },
+    {
+      "href": "#sa-8",
+      "rel": "related"
+    }
+  ],
+  "parts": [
+    {
+      "id": "ia-2_smt",
+      "name": "statement",
+      "prose": "Uniquely identify and authenticate organizational users and associate that unique identification with processes acting on behalf of those users."
+    },
+    {
+      "id": "ia-2_gdn",
+      "name": "guidance",
+      "prose": "Organizations can satisfy the identification and authentication requirements by complying with the requirements in [HSPD 12](#f16e438e-7114-4144-bfe2-2dfcad8cb2d0) . Organizational users include employees or individuals who organizations consider to have an equivalent status to employees (e.g., contractors and guest researchers). Unique identification and authentication of users applies to all accesses other than those that are explicitly identified in [AC-14](#ac-14) and that occur through the authorized use of group authenticators without individual authentication. Since processes execute on behalf of groups and roles, organizations may require unique identification of individuals in group accounts or for detailed accountability of individual activity.\n\nOrganizations employ passwords, physical authenticators, or biometrics to authenticate user identities or, in the case of multi-factor authentication, some combination thereof. Access to organizational systems is defined as either local access or network access. Local access is any access to organizational systems by users or processes acting on behalf of users, where access is obtained through direct connections without the use of networks. Network access is access to organizational systems by users (or processes acting on behalf of users) where access is obtained through network connections (i.e., nonlocal accesses). Remote access is a type of network access that involves communication through external networks. Internal networks include local area networks and wide area networks.\n\nThe use of encrypted virtual private networks for network connections between organization-controlled endpoints and non-organization-controlled endpoints may be treated as internal networks with respect to protecting the confidentiality and integrity of information traversing the network. Identification and authentication requirements for non-organizational users are described in [IA-8](#ia-8)."
+    },
+    {
+      "id": "ia-2_obj",
+      "links": [
+        {
+          "href": "#ia-2_smt",
+          "rel": "assessment-for"
+        }
+      ],
+      "name": "assessment-objective",
+      "parts": [
+        {
+          "id": "ia-2_obj-1",
+          "links": [
+            {
+              "href": "#ia-2_smt",
+              "rel": "assessment-for"
+            }
+          ],
+          "name": "assessment-objective",
+          "props": [
+            {
+              "class": "sp800-53a",
+              "name": "label",
+              "value": "IA-02[01]"
+            }
+          ],
+          "prose": "organizational users are uniquely identified and authenticated;"
+        },
+        {
+          "id": "ia-2_obj-2",
+          "links": [
+            {
+              "href": "#ia-2_smt",
+              "rel": "assessment-for"
+            }
+          ],
+          "name": "assessment-objective",
+          "props": [
+            {
+              "class": "sp800-53a",
+              "name": "label",
+              "value": "IA-02[02]"
+            }
+          ],
+          "prose": "the unique identification of authenticated organizational users is associated with processes acting on behalf of those users."
+        }
+      ],
+      "props": [
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "IA-02"
+        }
+      ]
+    },
+    {
+      "id": "ia-2_asm-examine",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Identification and authentication policy\n\nprocedures addressing user identification and authentication\n\nsystem security plan, system design documentation\n\nsystem configuration settings and associated documentation\n\nsystem audit records\n\nlist of system accounts\n\nother relevant documents or records"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "EXAMINE"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "IA-02-Examine"
+        }
+      ]
+    },
+    {
+      "id": "ia-2_asm-interview",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Organizational personnel with system operations responsibilities\n\norganizational personnel with information security responsibilities\n\nsystem/network administrators\n\norganizational personnel with account management responsibilities\n\nsystem developers"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "INTERVIEW"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "IA-02-Interview"
+        }
+      ]
+    },
+    {
+      "id": "ia-2_asm-test",
+      "name": "assessment-method",
+      "parts": [
+        {
+          "name": "assessment-objects",
+          "prose": "Organizational processes for uniquely identifying and authenticating users\n\nmechanisms supporting and/or implementing identification and authentication capabilities"
+        }
+      ],
+      "props": [
+        {
+          "name": "method",
+          "ns": "http://csrc.nist.gov/ns/rmf",
+          "value": "TEST"
+        },
+        {
+          "class": "sp800-53a",
+          "name": "label",
+          "value": "IA-02-Test"
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "class": "zero-padded",
+      "name": "label",
+      "value": "IA-02"
+    },
+    {
+      "name": "label",
+      "value": "IA-2"
+    },
+    {
+      "class": "sp800-53a",
+      "name": "label",
+      "value": "IA-02"
+    },
+    {
+      "name": "sort-id",
+      "value": "ia-02"
+    },
+    {
+      "name": "implementation-level",
+      "ns": "http://csrc.nist.gov/ns/rmf",
+      "value": "organization"
+    },
+    {
+      "name": "implementation-level",
+      "ns": "http://csrc.nist.gov/ns/rmf",
+      "value": "system"
+    }
+  ],
+  "title": "Identification and Authentication (Organizational Users)"
+}
