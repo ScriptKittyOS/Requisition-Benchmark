@@ -4,7 +4,7 @@
 >
 > v0.2.0 is the same 28 scenarios run again, with one addition: each scored row ships the receipt chain the plane signed for its verdict under a published key, so the Requisition half of every claim is now checkable for provenance — what the plane signed, hash-chained, under `evaluation_ed25519_v1` — though still not re-executable. Every tally is v0.1.0's.
 
-Measurements of **Requisition**, an authority control plane for autonomous agents: approvals bound to
+Measurements of **Requisition**, an authority and accountability system for consequential actions by any actor: approvals bound to
 frozen payload fingerprints, two-person seats, revocation, expiry, a hold, replay served from the
 record. Each release is a run the plane was driven through, the report written from that run, and a
 reader that lets you re-derive the checkable half of every claim offline.
