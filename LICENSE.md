@@ -459,8 +459,11 @@ Schedule A (Additional Permissions): any in force are published in the Repositor
 
 ---
 
-**Signed for Sudo Apt Holdings LLC**, as Licensor, by **Ayla Croft, Founder**, who also signs as the
-inventor for Section 7.3, on 2026-09-30.
+**Signed for Sudo Apt Holdings LLC**, as Licensor, by **Ayla Croft, Managing Member**, who also signs
+as the inventor for Section 7.3, on 2026-09-30.
+
+This signature replaces the one made the same day in commit `22e3da6`, which named the signatory's
+capacity as "Founder". The terms of the Licence are unchanged.
 
 OpenPGP key of Ayla Croft (`aylacroft@proton.me`):
 `24FE 4F05 E3E8 EC26 1462  A0C7 82A6 7035 D628 7F15`. The detached signature `LICENSE.md.asc` in the
